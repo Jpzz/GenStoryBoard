@@ -1,0 +1,45 @@
+{
+    "current_workflow":
+    {
+        "photo-realistic_maker":{
+            "next_workflow": 
+            {
+                "1":{
+                    "display_name": "T-pose-Maker",
+                    "workflow_name": "t-pose_maker.json"
+                },
+                "2":{
+                    "display_name": "Anime-Style-Maker",
+                    "workflow_name": "anime-3d_character.json"
+                }
+            }
+        },
+        "anime-3d_character": {
+            "next_workflow": 
+            {
+                "1":{
+                    "display_name": "T-pose-Maker",
+                    "workflow_name": "t-pose_maker.json"
+                }
+            }
+        },
+        "t-pose_maker": {
+            "next_workflow": 
+            {
+                "1":{
+                    "display_name": "Generate Multi-view Pose",
+                    "workflow_name": "character_multi-view_1st"
+                }
+            }
+        },
+        "character_multi-view_1st": {
+            "next_workflow": 
+            {
+                "1":{
+                    "display_name": "Multi-view Upscale",
+                    "workflow_name": "character_multi-view_2nd"
+                }
+            }
+        }
+    }
+}

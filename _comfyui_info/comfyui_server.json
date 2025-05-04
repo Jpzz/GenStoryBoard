@@ -1,0 +1,20 @@
+{
+  "servers": [
+    {
+      "name": "vilab-genAI-server1",
+      "ip": "192.168.195.100"
+    },
+    {
+      "name": "vilab-genAI-server2",
+      "ip": "192.168.195.101"
+    },
+    {
+      "name": "vilab-genAI-server3",
+      "ip": "192.168.195.102"
+    },
+    {
+      "name": "vilab-genAI-server4",
+      "ip": "192.168.195.103"
+    }
+  ]
+}

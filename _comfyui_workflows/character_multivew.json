@@ -1,0 +1,1266 @@
+{
+  "1": {
+    "inputs": {
+      "x": 0,
+      "y": 0,
+      "resize_source": false,
+      "destination": [
+        "10",
+        0
+      ],
+      "source": [
+        "23",
+        0
+      ],
+      "mask": [
+        "23",
+        1
+      ]
+    },
+    "class_type": "ImageCompositeMasked",
+    "_meta": {
+      "title": "ImageCompositeMasked"
+    }
+  },
+  "2": {
+    "inputs": {
+      "trimesh": [
+        "20",
+        0
+      ]
+    },
+    "class_type": "Hy3DMeshUVWrap",
+    "_meta": {
+      "title": "Hy3D Mesh UV Wrap"
+    }
+  },
+  "10": {
+    "inputs": {
+      "mask": [
+        "26",
+        0
+      ]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "Convert Mask to Image"
+    }
+  },
+  "16": {
+    "inputs": {
+      "mode": "base",
+      "use_jit": true
+    },
+    "class_type": "TransparentBGSession+",
+    "_meta": {
+      "title": "🔧 InSPyReNet TransparentBG"
+    }
+  },
+  "20": {
+    "inputs": {
+      "remove_floaters": true,
+      "remove_degenerate_faces": true,
+      "reduce_faces": true,
+      "max_facenum": 50149,
+      "smooth_normals": false,
+      "trimesh": [
+        "42",
+        0
+      ]
+    },
+    "class_type": "Hy3DPostprocessMesh",
+    "_meta": {
+      "title": "Hy3D Postprocess Mesh"
+    }
+  },
+  "21": {
+    "inputs": {
+      "guidance_scale": 5.5,
+      "steps": 50,
+      "seed": 123,
+      "scheduler": "FlowMatchEulerDiscreteScheduler",
+      "force_offload": true,
+      "pipeline": [
+        "128",
+        0
+      ],
+      "image": [
+        "23",
+        0
+      ],
+      "mask": [
+        "23",
+        1
+      ]
+    },
+    "class_type": "Hy3DGenerateMesh",
+    "_meta": {
+      "title": "Hy3DGenerateMesh"
+    }
+  },
+  "23": {
+    "inputs": {
+      "rembg_session": [
+        "16",
+        0
+      ],
+      "image": [
+        "25",
+        0
+      ]
+    },
+    "class_type": "ImageRemoveBackground+",
+    "_meta": {
+      "title": "🔧 Image Remove Background"
+    }
+  },
+  "25": {
+    "inputs": {
+      "width": 518,
+      "height": 518,
+      "interpolation": "lanczos",
+      "method": "pad",
+      "condition": "always",
+      "multiple_of": 2,
+      "image": [
+        "41",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "🔧 Image Resize"
+    }
+  },
+  "26": {
+    "inputs": {
+      "value": 0.8,
+      "width": 512,
+      "height": 512
+    },
+    "class_type": "SolidMask",
+    "_meta": {
+      "title": "SolidMask"
+    }
+  },
+  "36": {
+    "inputs": {
+      "view_size": 512,
+      "steps": 25,
+      "seed": 1024,
+      "denoise_strength": 1,
+      "pipeline": [
+        "142",
+        0
+      ],
+      "ref_image": [
+        "37",
+        0
+      ],
+      "normal_maps": [
+        "44",
+        0
+      ],
+      "position_maps": [
+        "44",
+        1
+      ],
+      "camera_config": [
+        "47",
+        0
+      ],
+      "scheduler": [
+        "43",
+        0
+      ]
+    },
+    "class_type": "Hy3DSampleMultiView",
+    "_meta": {
+      "title": "Hy3D Sample MultiView"
+    }
+  },
+  "37": {
+    "inputs": {
+      "steps": 50,
+      "width": 512,
+      "height": 512,
+      "cfg_image": 1,
+      "seed": 0,
+      "delight_pipe": [
+        "129",
+        0
+      ],
+      "image": [
+        "23",
+        0
+      ],
+      "scheduler": [
+        "40",
+        0
+      ]
+    },
+    "class_type": "Hy3DDelightImage",
+    "_meta": {
+      "title": "Hy3DDelightImage"
+    }
+  },
+  "40": {
+    "inputs": {
+      "scheduler": "Euler A",
+      "sigmas": "default",
+      "pipeline": [
+        "129",
+        0
+      ]
+    },
+    "class_type": "Hy3DDiffusersSchedulerConfig",
+    "_meta": {
+      "title": "Hy3D Diffusers Scheduler Config"
+    }
+  },
+  "41": {
+    "inputs": {
+      "image": "null.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Upload"
+    }
+  },
+  "42": {
+    "inputs": {
+      "box_v": 1.01,
+      "octree_resolution": 384,
+      "num_chunks": 32000,
+      "mc_level": 0,
+      "mc_algo": "mc",
+      "enable_flash_vdm": true,
+      "force_offload": true,
+      "vae": [
+        "128",
+        1
+      ],
+      "latents": [
+        "21",
+        0
+      ]
+    },
+    "class_type": "Hy3DVAEDecode",
+    "_meta": {
+      "title": "Hy3D VAE Decode"
+    }
+  },
+  "43": {
+    "inputs": {
+      "scheduler": "Euler A",
+      "sigmas": "default",
+      "pipeline": [
+        "142",
+        0
+      ]
+    },
+    "class_type": "Hy3DDiffusersSchedulerConfig",
+    "_meta": {
+      "title": "Hy3D Diffusers Scheduler Config"
+    }
+  },
+  "44": {
+    "inputs": {
+      "render_size": 1024,
+      "texture_size": 2048,
+      "normal_space": "world",
+      "trimesh": [
+        "2",
+        0
+      ],
+      "camera_config": [
+        "47",
+        0
+      ]
+    },
+    "class_type": "Hy3DRenderMultiView",
+    "_meta": {
+      "title": "Hy3D Render MultiView"
+    }
+  },
+  "47": {
+    "inputs": {
+      "camera_azimuths": [
+        "115",
+        0
+      ],
+      "camera_elevations": [
+        "116",
+        0
+      ],
+      "view_weights": "1, 0.1, 0.5, 0.1, 0.05, 0.05",
+      "camera_distance": 1.45,
+      "ortho_scale": 1.2
+    },
+    "class_type": "Hy3DCameraConfig",
+    "_meta": {
+      "title": "Hy3D Camera Config"
+    }
+  },
+  "56": {
+    "inputs": {
+      "text_input": "",
+      "task": "prompt_gen_mixed_caption_plus",
+      "fill_mask": true,
+      "keep_model_loaded": false,
+      "max_new_tokens": 1024,
+      "num_beams": 3,
+      "do_sample": true,
+      "output_mask_select": "",
+      "seed": 648031793686236,
+      "image": [
+        "149",
+        0
+      ],
+      "florence2_model": [
+        "57",
+        0
+      ]
+    },
+    "class_type": "Florence2Run",
+    "_meta": {
+      "title": "Florence2Run"
+    }
+  },
+  "57": {
+    "inputs": {
+      "model": "MiaoshouAI/Florence-2-base-PromptGen-v2.0",
+      "precision": "fp16",
+      "attention": "sdpa"
+    },
+    "class_type": "DownloadAndLoadFlorence2Model",
+    "_meta": {
+      "title": "DownloadAndLoadFlorence2Model"
+    }
+  },
+  "62": {
+    "inputs": {
+      "text": [
+        "209",
+        0
+      ],
+      "clip": [
+        "146",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Positive Prompt"
+    }
+  },
+  "65": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "62",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "66": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "146",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Negative Prompt"
+    }
+  },
+  "72": {
+    "inputs": {
+      "border_width": 0,
+      "number_of_columns": 3,
+      "max_cell_size": 512,
+      "border_red": 0,
+      "border_green": 0,
+      "border_blue": 0,
+      "images": [
+        "36",
+        0
+      ]
+    },
+    "class_type": "Create Grid Image from Batch",
+    "_meta": {
+      "title": "Create Grid Image from Batch"
+    }
+  },
+  "81": {
+    "inputs": {
+      "seed": 179484065698575,
+      "steps": 20,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 0.7000000000000002,
+      "model": [
+        "170",
+        0
+      ],
+      "positive": [
+        "86",
+        0
+      ],
+      "negative": [
+        "86",
+        1
+      ],
+      "latent_image": [
+        "88",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "86": {
+    "inputs": {
+      "strength": 0.5500000000000002,
+      "start_percent": 0,
+      "end_percent": 0.6000000000000001,
+      "positive": [
+        "65",
+        0
+      ],
+      "negative": [
+        "66",
+        0
+      ],
+      "control_net": [
+        "230",
+        0
+      ],
+      "image": [
+        "216",
+        0
+      ],
+      "vae": [
+        "127",
+        2
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "88": {
+    "inputs": {
+      "pixels": [
+        "216",
+        0
+      ],
+      "vae": [
+        "127",
+        2
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "89": {
+    "inputs": {
+      "upscale_by": 2,
+      "seed": 384340151733828,
+      "steps": 20,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 0.25,
+      "mode_type": "Linear",
+      "tile_width": 768,
+      "tile_height": 768,
+      "mask_blur": 8,
+      "tile_padding": 32,
+      "seam_fix_mode": "None",
+      "seam_fix_denoise": 1,
+      "seam_fix_width": 64,
+      "seam_fix_mask_blur": 8,
+      "seam_fix_padding": 16,
+      "force_uniform_tiles": false,
+      "tiled_decode": false,
+      "image": [
+        "90",
+        0
+      ],
+      "model": [
+        "170",
+        0
+      ],
+      "positive": [
+        "65",
+        0
+      ],
+      "negative": [
+        "66",
+        0
+      ],
+      "vae": [
+        "127",
+        2
+      ],
+      "upscale_model": [
+        "91",
+        0
+      ]
+    },
+    "class_type": "UltimateSDUpscale",
+    "_meta": {
+      "title": "Ultimate SD Upscale"
+    }
+  },
+  "90": {
+    "inputs": {
+      "samples": [
+        "81",
+        0
+      ],
+      "vae": [
+        "127",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "91": {
+    "inputs": {
+      "model_name": "4x-ClearRealityV1.pth"
+    },
+    "class_type": "Upscale Model Loader",
+    "_meta": {
+      "title": "Upscale Model Loader"
+    }
+  },
+  "92": {
+    "inputs": {
+      "anything": [
+        "89",
+        0
+      ]
+    },
+    "class_type": "easy cleanGpuUsed",
+    "_meta": {
+      "title": "Clean VRAM Used"
+    }
+  },
+  "93": {
+    "inputs": {
+      "guide_size": 512,
+      "guide_size_for": true,
+      "max_size": 1024,
+      "seed": 109347271201739,
+      "steps": 20,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 0.5,
+      "feather": 5,
+      "noise_mask": true,
+      "force_inpaint": true,
+      "bbox_threshold": 0.5,
+      "bbox_dilation": 10,
+      "bbox_crop_factor": 3,
+      "sam_detection_hint": "center-1",
+      "sam_dilation": 0,
+      "sam_threshold": 0.93,
+      "sam_bbox_expansion": 0,
+      "sam_mask_hint_threshold": 0.7,
+      "sam_mask_hint_use_negative": "False",
+      "drop_size": 10,
+      "wildcard": "",
+      "cycle": 1,
+      "inpaint_model": false,
+      "noise_mask_feather": 20,
+      "tiled_encode": false,
+      "tiled_decode": false,
+      "image": [
+        "92",
+        0
+      ],
+      "model": [
+        "170",
+        0
+      ],
+      "clip": [
+        "146",
+        1
+      ],
+      "vae": [
+        "127",
+        2
+      ],
+      "positive": [
+        "65",
+        0
+      ],
+      "negative": [
+        "66",
+        0
+      ],
+      "bbox_detector": [
+        "181",
+        0
+      ]
+    },
+    "class_type": "FaceDetailer",
+    "_meta": {
+      "title": "FaceDetailer"
+    }
+  },
+  "95": {
+    "inputs": {
+      "upscale_by": 2,
+      "seed": 384340151733008,
+      "steps": 20,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 0.25,
+      "mode_type": "Linear",
+      "tile_width": 768,
+      "tile_height": 768,
+      "mask_blur": 8,
+      "tile_padding": 32,
+      "seam_fix_mode": "None",
+      "seam_fix_denoise": 1,
+      "seam_fix_width": 64,
+      "seam_fix_mask_blur": 8,
+      "seam_fix_padding": 16,
+      "force_uniform_tiles": false,
+      "tiled_decode": false,
+      "image": [
+        "236",
+        0
+      ],
+      "model": [
+        "170",
+        0
+      ],
+      "positive": [
+        "65",
+        0
+      ],
+      "negative": [
+        "66",
+        0
+      ],
+      "vae": [
+        "127",
+        2
+      ],
+      "upscale_model": [
+        "195",
+        0
+      ]
+    },
+    "class_type": "UltimateSDUpscale",
+    "_meta": {
+      "title": "Ultimate SD Upscale"
+    }
+  },
+  "115": {
+    "inputs": {
+      "string": "0,45,90,180,270,315"
+    },
+    "class_type": "String Literal (Image Saver)",
+    "_meta": {
+      "title": "String Literal (Image Saver)"
+    }
+  },
+  "116": {
+    "inputs": {
+      "string": "0,0,0,0,0,0"
+    },
+    "class_type": "String Literal (Image Saver)",
+    "_meta": {
+      "title": "String Literal (Image Saver)"
+    }
+  },
+  "121": {
+    "inputs": {
+      "pulid_file": "pulid_flux_v0.9.1.safetensors"
+    },
+    "class_type": "PulidFluxModelLoader",
+    "_meta": {
+      "title": "Load PuLID Flux Model"
+    }
+  },
+  "122": {
+    "inputs": {},
+    "class_type": "PulidFluxEvaClipLoader",
+    "_meta": {
+      "title": "Load Eva Clip (PuLID Flux)"
+    }
+  },
+  "123": {
+    "inputs": {
+      "provider": "CUDA"
+    },
+    "class_type": "PulidFluxInsightFaceLoader",
+    "_meta": {
+      "title": "Load InsightFace (PuLID Flux)"
+    }
+  },
+  "124": {
+    "inputs": {
+      "weight": 0.9000000000000001,
+      "start_at": 0.25000000000000006,
+      "end_at": 1,
+      "model": [
+        "146",
+        0
+      ],
+      "pulid_flux": [
+        "121",
+        0
+      ],
+      "eva_clip": [
+        "122",
+        0
+      ],
+      "face_analysis": [
+        "123",
+        0
+      ],
+      "image": [
+        "41",
+        0
+      ]
+    },
+    "class_type": "ApplyPulidFlux",
+    "_meta": {
+      "title": "Apply PuLID Flux"
+    }
+  },
+  "125": {
+    "inputs": {
+      "control_net_name": "FLUX.1\\InstantX-FLUX1-Dev-Union\\diffusion_pytorch_model.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "127": {
+    "inputs": {
+      "ckpt_name": "flux\\flux1-dev-fp8.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "128": {
+    "inputs": {
+      "model": "hy3dgen\\hunyuan3d-dit-v2-0-fp16.safetensors",
+      "attention_mode": "sdpa",
+      "cublas_ops": false
+    },
+    "class_type": "Hy3DModelLoader",
+    "_meta": {
+      "title": "Hy3DModelLoader"
+    }
+  },
+  "129": {
+    "inputs": {
+      "model": "hunyuan3d-delight-v2-0"
+    },
+    "class_type": "DownloadAndLoadHy3DDelightModel",
+    "_meta": {
+      "title": "(Down)Load Hy3D DelightModel"
+    }
+  },
+  "130": {
+    "inputs": {
+      "toggle": true,
+      "mode": "simple",
+      "num_loras": 1,
+      "lora_1_name": "FLUX1.0\\Jixar_flux_v2.safetensors",
+      "lora_1_strength": 1,
+      "lora_1_model_strength": 1,
+      "lora_1_clip_strength": 1,
+      "lora_2_name": "None",
+      "lora_2_strength": 1,
+      "lora_2_model_strength": 1,
+      "lora_2_clip_strength": 1,
+      "lora_3_name": "None",
+      "lora_3_strength": 1,
+      "lora_3_model_strength": 1,
+      "lora_3_clip_strength": 1,
+      "lora_4_name": "None",
+      "lora_4_strength": 1,
+      "lora_4_model_strength": 1,
+      "lora_4_clip_strength": 1,
+      "lora_5_name": "None",
+      "lora_5_strength": 1,
+      "lora_5_model_strength": 1,
+      "lora_5_clip_strength": 1,
+      "lora_6_name": "None",
+      "lora_6_strength": 1,
+      "lora_6_model_strength": 1,
+      "lora_6_clip_strength": 1,
+      "lora_7_name": "None",
+      "lora_7_strength": 1,
+      "lora_7_model_strength": 1,
+      "lora_7_clip_strength": 1,
+      "lora_8_name": "None",
+      "lora_8_strength": 1,
+      "lora_8_model_strength": 1,
+      "lora_8_clip_strength": 1,
+      "lora_9_name": "None",
+      "lora_9_strength": 1,
+      "lora_9_model_strength": 1,
+      "lora_9_clip_strength": 1,
+      "lora_10_name": "None",
+      "lora_10_strength": 1,
+      "lora_10_model_strength": 1,
+      "lora_10_clip_strength": 1
+    },
+    "class_type": "easy loraStack",
+    "_meta": {
+      "title": "EasyLoraStack"
+    }
+  },
+  "142": {
+    "inputs": {
+      "model": "hunyuan3d-paint-v2-0"
+    },
+    "class_type": "DownloadAndLoadHy3DPaintModel",
+    "_meta": {
+      "title": "(Down)Load Hy3D PaintModel"
+    }
+  },
+  "146": {
+    "inputs": {
+      "lora_stack": [
+        "130",
+        0
+      ],
+      "model": [
+        "127",
+        0
+      ],
+      "optional_clip": [
+        "127",
+        1
+      ]
+    },
+    "class_type": "easy loraStackApply",
+    "_meta": {
+      "title": "Easy Apply LoraStack"
+    }
+  },
+  "149": {
+    "inputs": {
+      "crop_padding_factor": 0.25,
+      "cascade_xml": "lbpcascade_animeface.xml",
+      "image": [
+        "41",
+        0
+      ]
+    },
+    "class_type": "Image Crop Face",
+    "_meta": {
+      "title": "Image Crop Face"
+    }
+  },
+  "151": {
+    "inputs": {
+      "string": "a character sheet showing multiple views of a character in front of a gray background, best quality, not blurry, not nsfw, master piece, showing hands"
+    },
+    "class_type": "String Literal (Image Saver)",
+    "_meta": {
+      "title": "String Literal (Image Saver)"
+    }
+  },
+  "170": {
+    "inputs": {
+      "object_to_patch": "diffusion_model",
+      "residual_diff_threshold": 0.12000000000000002,
+      "start": 0,
+      "end": 0.6000000000000001,
+      "max_consecutive_cache_hits": -1,
+      "model": [
+        "124",
+        0
+      ]
+    },
+    "class_type": "ApplyFBCacheOnModel",
+    "_meta": {
+      "title": "Apply First Block Cache"
+    }
+  },
+  "181": {
+    "inputs": {
+      "model_name": "bbox/face_yolov8m.pt"
+    },
+    "class_type": "UltralyticsDetectorProvider",
+    "_meta": {
+      "title": "UltralyticsDetectorProvider"
+    }
+  },
+  "195": {
+    "inputs": {
+      "model_name": "4x-ClearRealityV1.pth"
+    },
+    "class_type": "Upscale Model Loader",
+    "_meta": {
+      "title": "Upscale Model Loader"
+    }
+  },
+  "198": {
+    "inputs": {
+      "images": [
+        "72",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "200": {
+    "inputs": {
+      "images": [
+        "90",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "202": {
+    "inputs": {
+      "images": [
+        "89",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "203": {
+    "inputs": {
+      "images": [
+        "93",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "205": {
+    "inputs": {
+      "images": [
+        "95",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "208": {
+    "inputs": {
+      "string": "3d pixar character"
+    },
+    "class_type": "String Literal (Image Saver)",
+    "_meta": {
+      "title": "Style"
+    }
+  },
+  "209": {
+    "inputs": {
+      "inputcount": 3,
+      "delimiter": ",",
+      "return_list": false,
+      "Update inputs": null,
+      "string_1": [
+        "151",
+        0
+      ],
+      "string_2": [
+        "56",
+        2
+      ],
+      "string_3": [
+        "208",
+        0
+      ]
+    },
+    "class_type": "JoinStringMulti",
+    "_meta": {
+      "title": "Join String Multi"
+    }
+  },
+  "211": {
+    "inputs": {
+      "text_0": "a character sheet showing multiple views of a character in front of a gray background, best quality, not blurry, not nsfw, master piece, showing hands,A 3d rendering portrait of a young woman with long, straight black hair and striking green eyes. she is positioned in the middle of the image, wearing a white blouse with a small zipper running down the center. her facial expression is a smile, with her green eyes looking directly at the viewer. her hair is styled in a neat, straight manner and falls down her back, framing her face. her skin is smooth and pale, with a subtle blush on her cheeks. she appears to be in her early twenties, with fair skin and a slender physique. the background is a simple dark gradient, allowing the focus to be on the subject's face and upper body. the image is high quality and professionally rendered, with smooth shading and vibrant colors.\n\n1girl, solo, long hair, breasts, looking at viewer, smile, black hair, closed mouth, green eyes, white shirt, upper body, parted lips, blurry, eyelashes, lips, black background, nose, realistic\n\ncamera_angle: portrait, art_style: 3D rendering, location: indoor, background: dark gradient background, text: NA, distance_to_camera: close up, clothing: white blazer, image_composition: middle, pants: NA,3d pixar character",
+      "text": [
+        "209",
+        0
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  },
+  "213": {
+    "inputs": {
+      "pixels": [
+        "72",
+        0
+      ],
+      "vae": [
+        "127",
+        2
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "215": {
+    "inputs": {
+      "seed": 852084330604292,
+      "steps": 20,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 0.8500000000000002,
+      "model": [
+        "170",
+        0
+      ],
+      "positive": [
+        "229",
+        0
+      ],
+      "negative": [
+        "229",
+        1
+      ],
+      "latent_image": [
+        "213",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "216": {
+    "inputs": {
+      "samples": [
+        "215",
+        0
+      ],
+      "vae": [
+        "127",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "220": {
+    "inputs": {
+      "images": [
+        "216",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "227": {
+    "inputs": {
+      "low_threshold": 0.20000000000000004,
+      "high_threshold": 0.7000000000000002,
+      "image": [
+        "72",
+        0
+      ]
+    },
+    "class_type": "Canny",
+    "_meta": {
+      "title": "Canny"
+    }
+  },
+  "228": {
+    "inputs": {
+      "images": [
+        "227",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "229": {
+    "inputs": {
+      "strength": 0.6000000000000001,
+      "start_percent": 0,
+      "end_percent": 0.4000000000000001,
+      "positive": [
+        "65",
+        0
+      ],
+      "negative": [
+        "66",
+        0
+      ],
+      "control_net": [
+        "231",
+        0
+      ],
+      "image": [
+        "227",
+        0
+      ],
+      "vae": [
+        "127",
+        2
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "230": {
+    "inputs": {
+      "type": "tile",
+      "control_net": [
+        "125",
+        0
+      ]
+    },
+    "class_type": "SetUnionControlNetType",
+    "_meta": {
+      "title": "SetUnionControlNetType"
+    }
+  },
+  "231": {
+    "inputs": {
+      "type": "canny/lineart/anime_lineart/mlsd",
+      "control_net": [
+        "125",
+        0
+      ]
+    },
+    "class_type": "SetUnionControlNetType",
+    "_meta": {
+      "title": "SetUnionControlNetType"
+    }
+  },
+  "235": {
+    "inputs": {
+      "images": [
+        "216",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "236": {
+    "inputs": {
+      "width": 640,
+      "height": 640,
+      "interpolation": "nearest",
+      "method": "fill / crop",
+      "condition": "always",
+      "multiple_of": 0,
+      "image": [
+        "93",
+        1
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "🔧 Image Resize"
+    }
+  },
+  "238": {
+    "inputs": {
+      "columns": 3,
+      "rows": 2,
+      "image": [
+        "93",
+        0
+      ]
+    },
+    "class_type": "ImageGridtoBatch",
+    "_meta": {
+      "title": "Image Grid To Batch"
+    }
+  },
+  "241": {
+    "inputs": {
+      "image1": [
+        "238",
+        0
+      ],
+      "image2": [
+        "95",
+        0
+      ]
+    },
+    "class_type": "ImageBatch",
+    "_meta": {
+      "title": "Batch Images"
+    }
+  },
+  "242": {
+    "inputs": {
+      "images": [
+        "241",
+        0
+      ]
+    },
+    "class_type": "SaveImageWebsocket",
+    "_meta": {
+      "title": "SaveImageWebsocket"
+    }
+  }
+}

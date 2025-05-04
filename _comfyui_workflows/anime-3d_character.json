@@ -1,0 +1,615 @@
+{
+  "2": {
+    "inputs": {
+      "ckpt_name": "flux\\flux1-dev-fp8.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "3": {
+    "inputs": {
+      "toggle": true,
+      "mode": "simple",
+      "num_loras": 1,
+      "lora_1_name": "FLUX1.0\\Jixar_flux_v2.safetensors",
+      "lora_1_strength": 0.9000000000000001,
+      "lora_1_model_strength": 1.0000000000000002,
+      "lora_1_clip_strength": 1.0000000000000002,
+      "lora_2_name": "None",
+      "lora_2_strength": 1.0000000000000002,
+      "lora_2_model_strength": 1.0000000000000002,
+      "lora_2_clip_strength": 1.0000000000000002,
+      "lora_3_name": "None",
+      "lora_3_strength": 1.0000000000000002,
+      "lora_3_model_strength": 1.0000000000000002,
+      "lora_3_clip_strength": 1.0000000000000002,
+      "lora_4_name": "None",
+      "lora_4_strength": 1.0000000000000002,
+      "lora_4_model_strength": 1.0000000000000002,
+      "lora_4_clip_strength": 1.0000000000000002,
+      "lora_5_name": "None",
+      "lora_5_strength": 1.0000000000000002,
+      "lora_5_model_strength": 1.0000000000000002,
+      "lora_5_clip_strength": 1.0000000000000002,
+      "lora_6_name": "None",
+      "lora_6_strength": 1.0000000000000002,
+      "lora_6_model_strength": 1.0000000000000002,
+      "lora_6_clip_strength": 1.0000000000000002,
+      "lora_7_name": "None",
+      "lora_7_strength": 1.0000000000000002,
+      "lora_7_model_strength": 1.0000000000000002,
+      "lora_7_clip_strength": 1.0000000000000002,
+      "lora_8_name": "None",
+      "lora_8_strength": 1.0000000000000002,
+      "lora_8_model_strength": 1.0000000000000002,
+      "lora_8_clip_strength": 1.0000000000000002,
+      "lora_9_name": "None",
+      "lora_9_strength": 1.0000000000000002,
+      "lora_9_model_strength": 1.0000000000000002,
+      "lora_9_clip_strength": 1.0000000000000002,
+      "lora_10_name": "None",
+      "lora_10_strength": 1.0000000000000002,
+      "lora_10_model_strength": 1.0000000000000002,
+      "lora_10_clip_strength": 1.0000000000000002
+    },
+    "class_type": "easy loraStack",
+    "_meta": {
+      "title": "EasyLoraStack"
+    }
+  },
+  "4": {
+    "inputs": {
+      "lora_stack": [
+        "3",
+        0
+      ],
+      "model": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "easy loraStackApply",
+    "_meta": {
+      "title": "Easy Apply LoraStack"
+    }
+  },
+  "5": {
+    "inputs": {
+      "object_to_patch": "diffusion_model",
+      "residual_diff_threshold": 0.12000000000000002,
+      "start": 0,
+      "end": 1,
+      "max_consecutive_cache_hits": -1,
+      "model": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "ApplyFBCacheOnModel",
+    "_meta": {
+      "title": "Apply First Block Cache"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": [
+        "18",
+        0
+      ],
+      "clip": [
+        "2",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Postive Prompt"
+    }
+  },
+  "7": {
+    "inputs": {
+      "seed": 998999083924363,
+      "steps": 25,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": [
+        "43",
+        0
+      ],
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "41",
+        0
+      ],
+      "negative": [
+        "9",
+        0
+      ],
+      "latent_image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler_01"
+    }
+  },
+  "8": {
+    "inputs": {
+      "pixels": [
+        "47",
+        0
+      ],
+      "vae": [
+        "2",
+        2
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "9": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "2",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Negative Prompt"
+    }
+  },
+  "10": {
+    "inputs": {
+      "samples": [
+        "7",
+        0
+      ],
+      "vae": [
+        "2",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "13": {
+    "inputs": {
+      "text_input": "",
+      "task": "prompt_gen_mixed_caption",
+      "fill_mask": true,
+      "keep_model_loaded": false,
+      "max_new_tokens": 1024,
+      "num_beams": 3,
+      "do_sample": true,
+      "output_mask_select": "",
+      "seed": 550403413069770,
+      "image": [
+        "47",
+        0
+      ],
+      "florence2_model": [
+        "14",
+        0
+      ]
+    },
+    "class_type": "Florence2Run",
+    "_meta": {
+      "title": "Florence2Run"
+    }
+  },
+  "14": {
+    "inputs": {
+      "model": "MiaoshouAI/Florence-2-large-PromptGen-v2.0",
+      "precision": "fp16",
+      "attention": "sdpa"
+    },
+    "class_type": "DownloadAndLoadFlorence2Model",
+    "_meta": {
+      "title": "DownloadAndLoadFlorence2Model"
+    }
+  },
+  "15": {
+    "inputs": {
+      "text": [
+        "13",
+        2
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  },
+  "16": {
+    "inputs": {
+      "find1": "realistic",
+      "replace1": "3d",
+      "find2": "photo-realistic",
+      "replace2": "3d character",
+      "find3": "",
+      "replace3": "",
+      "prompt": [
+        "15",
+        0
+      ]
+    },
+    "class_type": "easy promptReplace",
+    "_meta": {
+      "title": "PromptReplace"
+    }
+  },
+  "17": {
+    "inputs": {
+      "string": "(pixar character:1.1), (anime:1.1), 3d rendering character, best quality, not nsfw, detailed eyes, white skin, detailed face, beautiful, master piece, (simple gray background:1.1)"
+    },
+    "class_type": "String Literal (Image Saver)",
+    "_meta": {
+      "title": "String Literal (Image Saver)"
+    }
+  },
+  "18": {
+    "inputs": {
+      "delimiter": ",",
+      "string1": [
+        "16",
+        0
+      ],
+      "string2": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "JoinStrings",
+    "_meta": {
+      "title": "Join Strings"
+    }
+  },
+  "22": {
+    "inputs": {
+      "image": "result_32_0.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Upload"
+    }
+  },
+  "28": {
+    "inputs": {
+      "seed": 471841304240765,
+      "steps": 25,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": [
+        "43",
+        0
+      ],
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "41",
+        0
+      ],
+      "negative": [
+        "9",
+        0
+      ],
+      "latent_image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler_02"
+    }
+  },
+  "33": {
+    "inputs": {
+      "seed": 532279572820989,
+      "steps": 25,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": [
+        "43",
+        0
+      ],
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "41",
+        0
+      ],
+      "negative": [
+        "9",
+        0
+      ],
+      "latent_image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler_03"
+    }
+  },
+  "34": {
+    "inputs": {
+      "seed": 385809927076390,
+      "steps": 25,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": [
+        "43",
+        0
+      ],
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "41",
+        0
+      ],
+      "negative": [
+        "9",
+        0
+      ],
+      "latent_image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler_04"
+    }
+  },
+  "35": {
+    "inputs": {
+      "samples": [
+        "28",
+        0
+      ],
+      "vae": [
+        "2",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "36": {
+    "inputs": {
+      "samples": [
+        "33",
+        0
+      ],
+      "vae": [
+        "2",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "37": {
+    "inputs": {
+      "samples": [
+        "34",
+        0
+      ],
+      "vae": [
+        "2",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "41": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "43": {
+    "inputs": {
+      "value": 0.8600000000000002
+    },
+    "class_type": "easy float",
+    "_meta": {
+      "title": "Denoise"
+    }
+  },
+  "47": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "interpolation": "nearest",
+      "method": "fill / crop",
+      "condition": "always",
+      "multiple_of": 0,
+      "image": [
+        "22",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "🔧 Image Resize"
+    }
+  },
+  "68": {
+    "inputs": {
+      "images": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "70": {
+    "inputs": {
+      "images": [
+        "35",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "72": {
+    "inputs": {
+      "images": [
+        "36",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "74": {
+    "inputs": {
+      "images": [
+        "37",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "75": {
+    "inputs": {
+      "images": [
+        "77",
+        0
+      ]
+    },
+    "class_type": "SaveImageWebsocket",
+    "_meta": {
+      "title": "SaveImageWebsocket"
+    }
+  },
+  "77": {
+    "inputs": {
+      "image1": [
+        "10",
+        0
+      ],
+      "image2": [
+        "35",
+        0
+      ],
+      "image3": [
+        "36",
+        0
+      ],
+      "image4": [
+        "37",
+        0
+      ]
+    },
+    "class_type": "ImpactMakeImageBatch",
+    "_meta": {
+      "title": "Make Image Batch"
+    }
+  },
+  "78": {
+    "inputs": {
+      "root_dir": "output",
+      "file": [
+        "81",
+        0
+      ],
+      "append": "append",
+      "insert": true,
+      "text": [
+        "18",
+        0
+      ]
+    },
+    "class_type": "SaveText|pysssss",
+    "_meta": {
+      "title": "Save Text 🐍"
+    }
+  },
+  "79": {
+    "inputs": {
+      "value": "Prompt"
+    },
+    "class_type": "easy string",
+    "_meta": {
+      "title": "Prompt"
+    }
+  },
+  "80": {
+    "inputs": {
+      "value": ""
+    },
+    "class_type": "easy string",
+    "_meta": {
+      "title": "Prompt Name"
+    }
+  },
+  "81": {
+    "inputs": {
+      "delimiter": "/",
+      "string1": [
+        "79",
+        0
+      ],
+      "string2": [
+        "80",
+        0
+      ]
+    },
+    "class_type": "JoinStrings",
+    "_meta": {
+      "title": "Join Strings"
+    }
+  }
+}
