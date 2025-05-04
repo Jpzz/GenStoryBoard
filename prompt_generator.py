@@ -47,6 +47,6 @@ async def translate_to_flux_prompt(korean_text: List[str], model: str = "grok-3-
                     error_text = await response.text()
                     print(f"API 호출 실패: {response.status}, {error_text}")
                     return None
-    except Exception as e:
-        print(f"프롬프트 생성 중 오류 발생: {str(e)}")
-        return None
+        except Exception as e:
+            print(f"프롬프트 생성 중 오류 발생: {str(e)}")
+            return None
