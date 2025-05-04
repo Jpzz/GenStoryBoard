@@ -1,0 +1,7 @@
+# 무시할 디렉토리
+_storyboard/
+_temp/
+
+# 무시할 파일
+.env
+.DS_Store
