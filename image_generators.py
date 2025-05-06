@@ -338,7 +338,7 @@ class StoryBoardGenerator(ImageGenerator):
     """스토리보드 생성기"""
     
     def __init__(self, server_ip):
-        super().__init__(server_ip, "storyboard_flux1.0_dev.json")
+        super().__init__(server_ip, "storyboard-maker.json")
         self.timeout = 300  # 스토리보드 생성 프로세스의 타임아웃 설정
         
     def prepare_prompt(self, prompt, params, seed_value):
@@ -346,10 +346,6 @@ class StoryBoardGenerator(ImageGenerator):
         # 노드별 파라미터 설정
         for node_id, node in prompt.items():
             # 텍스트 인코딩
-            if node.get("class_type") == "CLIPTextEncode" and node.get("_meta", {}).get("title") == "CLIP Text Encode (Positive Prompt)":
-                node["inputs"]["text"] = params["positive"]
+            if node.get("class_type") == "JsonParserNode" and node.get("_meta", {}).get("title") == "JsonParserNode":
+                node["inputs"]["file_name"] = params["prompt_file_name"]
                 
-            # 프롬프트 이름 설정
-            elif node.get("class_type") == "easy string" and node.get("_meta", {}).get("title") == "Prompt Name":
-                node["inputs"]["value"] = f"prompt_{str(int(random.randint(1, 1000000)))}.txt"
-    

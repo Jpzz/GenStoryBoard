@@ -92,16 +92,21 @@ def generate_progress_bar(percentage, length=20):
 #-------------------------------------------------------------------------------------------------------------# 
 async def check_server_setting(interaction):
     """
-    서버 설정을 확인하고 서버 IP를 반환
+    서버 설정을 확인하고 서버 IP를 반환하는 함수
     
     Args:
-        interaction: Discord 인터랙션 객체
+        interaction: Discord 상호작용 객체
         
     Returns:
         server_ip 또는 None
     """
+    global server_list
     server_ip = None
     server_port = 8000  # ComfyUI 기본 포트
+    
+    # 서버 리스트가 초기화되지 않았거나 올바른 형식이 아닌 경우 초기화
+    if not isinstance(server_list, dict) or 'servers' not in server_list:
+        server_list = utils.initialize_server_list()
     
     for server in server_list['servers']:
         if server['name'] == 'vilab-genAI-server4':
@@ -279,47 +284,39 @@ async def upload_text(interaction, server_ip, ref, overwrite: bool = True):
     텍스트를 업로드하고 파일 이름을 반환합니다.
     """    
     subfolder = "prompt"
-    print(f"유저가 업로드한 첨부 파일 이름은 : {ref.filename}")
-    excel_file_path = os.path.join(os.path.dirname(__file__), "_storyboard", "_excel", ref.filename)
-    print(f"엑셀 파일 경로 : {excel_file_path}")
     
+    temp_file_path = os.path.join(os.path.dirname(__file__), "_temp", ref.filename)
     try:
-        # ref가 discord.Attachment 객체인 경우
         if isinstance(ref, discord.Attachment):
-            # 파일 다운로드 및 저장
-            await ref.save(excel_file_path)
-        # ref가 문자열 경로인 경우 (로컬 파일 경로)
-        elif isinstance(ref, str) and os.path.exists(ref):
-            # 파일 복사
-            import shutil
-            shutil.copy2(ref, excel_file_path)
+            await ref.save(temp_file_path)
         else:
-            raise ValueError("지원되지 않는 참조 유형입니다. discord.Attachment 또는 유효한 파일 경로가 필요합니다.")
-            
+            await interaction.followup.send(embed=utils.set_embed("업로드 오류", "텍스트 업로드 중 오류가 발생했습니다: {str(e)}", discord.Color.red()), ephemeral=True)
+            return
+
         # 파일이 정상적으로 저장되었는지 확인
-        if not os.path.exists(excel_file_path):
-            raise FileNotFoundError("파일이 제대로 저장되지 않았습니다.")
+        if not os.path.exists(temp_file_path):
+            await interaction.followup.send(embed=utils.set_embed("업로드 오류", f"텍스트 업로드 중 오류가 발생했습니다: {str(e)}", discord.Color.red()), ephemeral=True)
+            raise Exception("텍스트 업로드 중 오류가 발생했습니다.")
             
-        json_file_name = utils.set_file_name(interaction, "json")
-        await interaction.followup.send(embed=utils.set_embed("텍스트 생성 중", "텍스트를 생성하는 중입니다.\n\n텍스트 생성이 완료되면 이미지 생성을 시작합니다.", discord.Color.blue()), ephemeral=True)
-        json_file_path = await process_txt(excel_file_path, json_file_name)
-        print(f"텍스트 파일 경로 : {json_file_path}")
-    
-        with ThreadPoolExecutor() as executor:
-            # 비동기 작업으로 파일 업로드
-            future = executor.submit(upload_file, json_file_path, json_file_name, server_ip, overwrite, subfolder)
-            filename = future.result()
+        try:
+            with ThreadPoolExecutor() as executor:
+                # 비동기 작업으로 파일 업로드
+                future = executor.submit(upload_file, temp_file_path, ref.filename, server_ip, overwrite, subfolder)
+                filename = future.result()
             
             if filename:
                 return filename
             else:
                 await interaction.followup.send(embed=utils.set_embed("업로드 실패", "텍스트 업로드에 실패했습니다. 다시 시도해주세요.", discord.Color.red()), ephemeral=True)
                 return None
-                
+        except Exception as e:
+            await interaction.followup.send(embed=utils.set_embed("업로드 오류", "텍스트 업로드 중 오류가 발생했습니다: {str(e)}", discord.Color.red()), ephemeral=True)
+            return None
+    
     except Exception as e:
-        print(f"텍스트 업로드 중 오류: {str(e)}")
-        await interaction.followup.send(embed=utils.set_embed("업로드 오류", f"텍스트 처리 중 오류가 발생했습니다: {str(e)}", discord.Color.red()), ephemeral=True)
-        return None
+        await interaction.followup.send(embed=utils.set_embed("업로드 오류", "텍스트 업로드 중 오류가 발생했습니다: {str(e)}", discord.Color.red()), ephemeral=True)
+        return
+        
 #-------------------------------------------------------------------------------------------------------------#
 # 텍스트 업로드 함수
 #-------------------------------------------------------------------------------------------------------------#
@@ -769,6 +766,32 @@ async def multiview_character_2nd_process_generate_command(interaction, ref:disc
 # 멀티뷰 생성 2차 처리 함수
 #-------------------------------------------------------------------------------------------------------------#
 
+async def storyboard_prompt_generate_command(interaction, ref:discord.Attachment):
+    
+    excel_file_path = os.path.join(os.path.dirname(__file__), "_storyboard", "_excel", ref.filename)
+    print(f"엑셀 파일 경로 : {excel_file_path}")
+    
+    try:
+        # ref가 discord.Attachment 객체인 경우
+        if isinstance(ref, discord.Attachment):
+            # 파일 다운로드 및 저장
+            await ref.save(excel_file_path)
+        # 파일이 정상적으로 저장되었는지 확인
+        if not os.path.exists(excel_file_path):
+            raise FileNotFoundError("파일이 제대로 저장되지 않았습니다.")
+            
+        json_file_name = utils.set_file_name(interaction, "json")
+        await interaction.followup.send(embed=utils.set_embed("텍스트 생성 중", "텍스트를 생성하는 중입니다.\n\n텍스트 생성이 완료되면 이미지 생성을 시작합니다.", discord.Color.blue()), ephemeral=True)
+        json_file_path = await process_txt(excel_file_path, json_file_name)
+        print(f"텍스트 파일 경로 : {json_file_path}")
+        
+        await interaction.followup.send(embed=utils.set_embed("텍스트 생성 완료", "텍스트 생성이 완료되었습니다.", discord.Color.green()), file=discord.File(json_file_path), ephemeral=True)
+    except Exception as e:
+        print(f"텍스트 업로드 중 오류: {str(e)}")
+        await interaction.followup.send(embed=utils.set_embed("업로드 오류", f"텍스트 처리 중 오류가 발생했습니다: {str(e)}", discord.Color.red()), ephemeral=True)
+        return None
+    
+
 #-------------------------------------------------------------------------------------------------------------#
 # 스토리보드 생성 처리 함수
 #-------------------------------------------------------------------------------------------------------------#
@@ -777,9 +800,71 @@ async def storyboard_process_generate_command(interaction, ref:discord.Attachmen
     if server_ip is None:
         return
    
-    prompt_file_name = await upload_text(interaction, server_ip, ref)
-    if prompt_file_name is None:
+    if ref is None:
         return
+    
+    try:
+        ref_file_name = await upload_text(interaction, server_ip, ref)
+        if ref_file_name is None:
+            return
+        
+        generation_params = {
+            "prompt_file_name": ref_file_name
+        }
+        
+        # 스토리보드 생성기 초기화
+        generator = StoryBoardGenerator(server_ip)
+        
+        # 콜백 관리자 생성
+        callback_manager = ImageCallbackManager(server_ip, generation_params)
+        
+        # 이미지 생성 실행
+        image_files, image_paths, load_prompt_text, seed_values = await generator.generate(interaction, generation_params, None)
+        
+        if not image_files:
+            return
+            
+        # 이미지가 10개 이상인 경우 처리 (Discord 제한)
+        description = f"seed: {seed_values[0] if isinstance(seed_values, list) else seed_values} prompt: {load_prompt_text}"
+        success_embed = utils.set_embed("스토리보드 생성 완료", description, discord.Color.green())
+        
+        # 10개씩 나누어 전송
+        for i in range(0, len(image_files), 10):
+            batch_files = image_files[i:i+10]
+            batch_paths = {k: v for k, v in image_paths.items() if k.split('_')[1] in [str(j % len(image_files)) for j in range(i, i+10)]}
+            
+            # 마지막 배치에만 뷰 추가
+            if i + 10 >= len(image_files):
+                view = callback_manager.create_view(
+                    image_files=image_files,  # 전체 이미지 파일 정보는 유지
+                    image_paths=image_paths,  # 전체 경로 정보도 유지
+                    description=description,
+                    retry_function=generator.generate,
+                    is_next_button_visible=False
+                )
+                await interaction.followup.send(
+                    embed=success_embed, 
+                    files=batch_files, 
+                    view=view, 
+                    ephemeral=True,
+                    content=f"이미지 {i+1}-{i+len(batch_files)}/{len(image_files)}"
+                )
+            else:
+                await interaction.followup.send(
+                    embed=success_embed, 
+                    files=batch_files, 
+                    ephemeral=True,
+                    content=f"이미지 {i+1}-{i+len(batch_files)}/{len(image_files)}"
+                )
+        else:
+            # 이미지가 없는 경우
+            warning_embed = utils.set_embed("이미지 생성 완료", "이미지 생성은 완료되었으나 결과 이미지를 찾을 수 없습니다.", discord.Color.gold())
+            await interaction.followup.send(embed=warning_embed, ephemeral=True)
+    except Exception as e:
+        print(f"스토리보드 생성 중 오류: {str(e)}")
+        await interaction.followup.send(embed=utils.set_embed("업로드 오류", f"스토리보드 생성 중 오류가 발생했습니다: {str(e)}", discord.Color.red()), ephemeral=True)
+        return None
+    
     pass
 
 #-------------------------------------------------------------------------------------------------------------#

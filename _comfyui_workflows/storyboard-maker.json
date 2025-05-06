@@ -1,0 +1,523 @@
+{
+  "11": {
+    "inputs": {
+      "ckpt_name": "flux\\flux1-dev-fp8.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "12": {
+    "inputs": {
+      "object_to_patch": "diffusion_model",
+      "residual_diff_threshold": 0.12000000000000002,
+      "start": 0,
+      "end": 1,
+      "max_consecutive_cache_hits": -1,
+      "model": [
+        "146",
+        0
+      ]
+    },
+    "class_type": "ApplyFBCacheOnModel",
+    "_meta": {
+      "title": "Apply First Block Cache"
+    }
+  },
+  "15": {
+    "inputs": {
+      "text": [
+        "194",
+        0
+      ],
+      "clip": [
+        "11",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "16": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "11",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "17": {
+    "inputs": {
+      "seed": 1024589045284380,
+      "steps": 20,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "12",
+        0
+      ],
+      "positive": [
+        "166",
+        0
+      ],
+      "negative": [
+        "16",
+        0
+      ],
+      "latent_image": [
+        "87",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "19": {
+    "inputs": {
+      "samples": [
+        "17",
+        0
+      ],
+      "vae": [
+        "11",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "27": {
+    "inputs": {
+      "file_name": "vilab_jungho_kim_17283.json"
+    },
+    "class_type": "JsonParserNode",
+    "_meta": {
+      "title": "JsonParserNode"
+    }
+  },
+  "87": {
+    "inputs": {
+      "resolution": "1280x768 (1.67)",
+      "batch_size": 1,
+      "width_override": 0,
+      "height_override": 0
+    },
+    "class_type": "SDXLEmptyLatentSizePicker+",
+    "_meta": {
+      "title": "🔧 SDXL Empty Latent Size Picker"
+    }
+  },
+  "132": {
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "145": {
+    "inputs": {
+      "toggle": true,
+      "mode": "simple",
+      "num_loras": 1,
+      "lora_1_name": "FLUX1.0\\PencilSketch_Style - [FLUX - uisato].safetensors",
+      "lora_1_strength": 1.0000000000000002,
+      "lora_1_model_strength": 1,
+      "lora_1_clip_strength": 1,
+      "lora_2_name": "FLUX1.0\\sketchV1.safetensors",
+      "lora_2_strength": 1.0000000000000002,
+      "lora_2_model_strength": 1,
+      "lora_2_clip_strength": 1,
+      "lora_3_name": "None",
+      "lora_3_strength": 1,
+      "lora_3_model_strength": 1,
+      "lora_3_clip_strength": 1,
+      "lora_4_name": "None",
+      "lora_4_strength": 1,
+      "lora_4_model_strength": 1,
+      "lora_4_clip_strength": 1,
+      "lora_5_name": "None",
+      "lora_5_strength": 1,
+      "lora_5_model_strength": 1,
+      "lora_5_clip_strength": 1,
+      "lora_6_name": "None",
+      "lora_6_strength": 1,
+      "lora_6_model_strength": 1,
+      "lora_6_clip_strength": 1,
+      "lora_7_name": "None",
+      "lora_7_strength": 1,
+      "lora_7_model_strength": 1,
+      "lora_7_clip_strength": 1,
+      "lora_8_name": "None",
+      "lora_8_strength": 1,
+      "lora_8_model_strength": 1,
+      "lora_8_clip_strength": 1,
+      "lora_9_name": "None",
+      "lora_9_strength": 1,
+      "lora_9_model_strength": 1,
+      "lora_9_clip_strength": 1,
+      "lora_10_name": "None",
+      "lora_10_strength": 1,
+      "lora_10_model_strength": 1,
+      "lora_10_clip_strength": 1
+    },
+    "class_type": "easy loraStack",
+    "_meta": {
+      "title": "EasyLoraStack"
+    }
+  },
+  "146": {
+    "inputs": {
+      "lora_stack": [
+        "145",
+        0
+      ],
+      "model": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "easy loraStackApply",
+    "_meta": {
+      "title": "Easy Apply LoraStack"
+    }
+  },
+  "147": {
+    "inputs": {
+      "value": "sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))"
+    },
+    "class_type": "easy string",
+    "_meta": {
+      "title": "String"
+    }
+  },
+  "149": {
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ]
+    },
+    "class_type": "SaveImageWebsocket",
+    "_meta": {
+      "title": "SaveImageWebsocket"
+    }
+  },
+  "166": {
+    "inputs": {
+      "guidance": 4,
+      "conditioning": [
+        "15",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "188": {
+    "inputs": {
+      "text_array": [
+        "216",
+        0
+      ],
+      "find_text": [
+        "199",
+        3
+      ],
+      "append_text": [
+        "209",
+        0
+      ]
+    },
+    "class_type": "TextAppendIfFoundNode",
+    "_meta": {
+      "title": "TextAppendIfFoundNode"
+    }
+  },
+  "190": {
+    "inputs": {
+      "text_array": [
+        "188",
+        0
+      ],
+      "find_text": [
+        "199",
+        1
+      ],
+      "append_text": [
+        "210",
+        0
+      ]
+    },
+    "class_type": "TextAppendIfFoundNode",
+    "_meta": {
+      "title": "TextAppendIfFoundNode"
+    }
+  },
+  "194": {
+    "inputs": {
+      "delimiter": ", ",
+      "clean_whitespace": "true",
+      "text_a": [
+        "190",
+        0
+      ],
+      "text_b": [
+        "147",
+        0
+      ]
+    },
+    "class_type": "Text Concatenate",
+    "_meta": {
+      "title": "Text Concatenate"
+    }
+  },
+  "199": {
+    "inputs": {
+      "zipped_character": [
+        "27",
+        1
+      ]
+    },
+    "class_type": "SplitCharacterNode",
+    "_meta": {
+      "title": "SplitCharacterNode"
+    }
+  },
+  "201": {
+    "inputs": {
+      "zipped_prompt": [
+        "27",
+        0
+      ]
+    },
+    "class_type": "SplitPromptNode",
+    "_meta": {
+      "title": "SplitPromptNode"
+    }
+  },
+  "202": {
+    "inputs": {
+      "text_0": "\"Somyung\" is positioned on the right side of the screen, at the right 1/3 and half the screen height. The facility's entrance is on the left side, at the left 1/3 and two-thirds the screen height. \"Somyung\" is moving carefully from right to left. The hologram display is in the center bottom, at one-fourth the screen height., medium shot, 8 PM, clear, \"Somyung\" sneaks into the power facility in New Seoul. The background is a high-tech facility surrounded by smooth metal walls, flashing LED lights, and hologram displays, with security drones and laser sensors placed everywhere. \"Somyung\" carefully steals electricity in the darkness. Adjust lighting so that \"Somyung\"'s face is not too brightly lit and ensure no other characters appear in the background.",
+      "text_1": "\"Somyung\" is moving from the center of the screen to the left, with the border's barbed wire and watchtowers positioned on the right side of the screen to create a tense composition. Position \"Somyung\" at the screen's central 1/3 (at 1/3 of the screen height), barbed wire and watchtowers at the screen's right 1/3 (at 2/3 of the screen height), and New Seoul lights at the screen's left upper part (at 1/4 of the screen height)., Wide shot, Evening 9 PM, clear, \"Somyung\" is carrying the stolen power cell and crossing over to Old Seoul. The border is heavily guarded with barbed wire, watchtowers, and armed drones. The bright lights of New Seoul shine from afar, and the dark shadows of Old Seoul block the way ahead. The sound of weeds rustling in the wind adds to the tension. Avoid modern road signs or signboards on \"Somyung\"'s path. Ensure the border's security elements are not exaggerated.",
+      "text_2": "For the close-up: 'Somyung's face is in the center of the screen at 3/4 of the screen height. For the wide shot: Zombies are in the left 1/3 at 1/2 of the screen height, 'Somyung' is in the right 1/3 at 1/2 of the screen height, and ruins are in the bottom 2/3 of the screen. 'Somyung's close-up is in the center of the screen, zombies appear from left to right on the screen, and 'Somyung' is fleeing to the right side of the screen., Close-up of 'Somyung's face, wide shot of zombies, 10 PM, clear, In the ruins of old Seoul, 'Somyung' barely escapes a zombie attack. The background is filled with broken asphalt, tangled vines, and collapsed shopping districts, with zombies suddenly emerging from dark alleys. Moonlight reflects off the glass of broken vehicles. Negative: Be careful not to make the zombies' movements too fast or too slow, and ensure that no modern objects are visible in the background.",
+      "text_3": "The camera shows the inside of the laboratory from Somyung's point of view, with the laboratory entrance in the center of the screen, and experimental equipment scattered on the left and right. Laboratory entrance is in the central 1/3 (2/3 of screen height), broken glass tube is in the left 1/3 (1/3 of screen height), old computer and bottles are in the right 1/3 (1/3 of screen height). Somyung is not visible in POV., Somyung's POV shot, 10 AM, clear, Somyung discovers an abandoned laboratory in Old Seoul. The laboratory is covered in dust and moss, with broken glass tubes, old computers, and bottles containing strange liquids from failed experiments scattered around. Light seeping through the windows illuminates the dust. Ensure that no modern equipment is visible inside the laboratory and maintain balance so that the dust and moss are not exaggerated.",
+      "text_4": "Robu is positioned in the center of the screen at the central 1/3 and at 2/3 of the screen height, Somyung is standing on the left side at the left 1/3 and at 1/2 of the screen height, and as Robu activates, light fills the screen. The old equipment and posters are in the right 1/3 and bottom at 1/4 of the screen height., Medium shot of Robu being activated, 11 AM, clear, Somyung activates AI robot Robu in the laboratory. Robu is standing covered in dust and vines, then awakens with light and mechanical sounds. In the background, the laboratory's old equipment is flickering and operating, and there are old posters on the wall. Ensure that Robu's design or movement is not too modern or futuristic, and maintain balance so that the old equipment's operation is not exaggerated.",
+      "text_5": "\"소명\" is positioned at the left 1/3 of the screen (at half the screen height), \"로부\" is at the right 1/3 of the screen (at two-thirds the screen height). The hologram is at the central 1/3 (at one-third the screen height). Monitors and charts are at the bottom of the screen (at one-fourth the screen height)., A two-shot of \"소명\" and \"로부\", 12 PM, clear, Generate an image of \"로부\" explaining the origin of the zombie virus to \"소명\" inside a laboratory. The conversation is taking place, with \"로부\" activating a hologram that displays the virus structure and data. In the background, there are old monitors and charts in the laboratory. Negative: Ensure the hologram design is not too modern, and make sure the monitors and charts in the background are not too complex or modern in design.",
+      "text_6": "Compose the scene with \"Somyung\" on the left side of the screen, the survivor on the right side of the screen, and the shelter entrance in the center. For external: The building is in the center 2/3 of the screen (3/4 of screen height). For internal: \"Somyung\" is on the right 1/3 of the screen (1/2 of screen height), the guard robot is on the left 1/3 of the screen (1/3 of screen height), and the hologram sign is at the bottom center of the screen (1/4 of screen height)., \"Somyung\" and companion's two shot, 1 PM, cloudy, Generate an image of \"Somyung\" meeting a survivor in Old Seoul. The survivor is hiding in a shelter made of waste materials, with rusty iron plates, piled-up canned goods, a broken radio, and traces of survival scattered in the background. Zombie howls are heard in the distance. Avoid making the survivor's clothing or items too modern; ensure that no modern items are visible inside the shelter.",
+      "text_7": "For the building exterior shot, the building is positioned in the center of the screen; for the interior, '소명' moves from the right side to the left side of the screen, with the guard robot on the left side of the screen. In close-ups: Evidence (tablet) is in the center of the screen at 3/4 of the screen height, '소명' is on the right 1/3 of the screen at 1/2 of the screen height, large screen is on the left 1/3 of the screen at 1/2 of the screen height, night view is on the upper left of the screen at 1/3 of the screen height., Wide shot of the building exterior, medium shot of the interior, 7 PM, clear, Generate an image of '소명' infiltrating a high-security building in 신서울, which is a massive structure of glass and steel, armed with biometric scanners, AI guard robots, and moving surveillance cameras. In the background, there are hologram signs and the quiet humming of machinery, but ensure the building's design is not too modern and maintain balance so that the internal technology is not too futuristic.",
+      "text_8": "The evidence is close-up in the center of the screen, \"Somyung\" is positioned on the right side of the screen and in the central 1/3 (1/3 of screen height), the night view outside the window is visible on the left side of the screen. The security officer is in the left 1/3 (1/3 of screen height), the drone is in the upper 1/3 (1/4 of screen height), and the corridor and glass window are in the lower 2/3 (2/3 of screen height)., Close-up of the evidence, close-up of \"Somyung\"'s reaction, Evening 8 PM, clear, \"Somyung\" discovers data that reveals the conspiracy. The background is a sophisticated office, with a large screen on the wall displaying numbers and graphs, and a transparent tablet on the desk. Outside the window, the night view of Shinseoul is visible. Be careful not to make the office design too modern and not to make the night view outside the window too bright or flashy.",
+      "text_9": "Somyung is fleeing in the center of the screen, with pursuing agents appearing from the left side of the screen; the drone is shot from a top-down view. Somyung in the central 1/3 (1/3 of screen height), security agents in the left 1/3 (1/3 of screen height), drone in the upper 1/3 (1/4 of screen height), corridors and glass windows in the lower 2/3 (2/3 of screen height)., Wide shot for action, close-up for intensity, 9 PM, clear, Somyung is being chased by security agents. The background is the high-tech corridors and outdoors of Shin Seoul, with flying drones and high-speed electric motorcycles joining the chase. Neon lights reflect on the building's glass windows, emphasizing the speed. Avoid too many characters in the chase scene and ensure that modern objects are not visible in the background.",
+      "text_10": "\"Somyung\" is running from the right side of the screen to the left, with the border's barbed wire located in the center of the screen. \"Somyung\" moves from the right 1/3 to the left 1/3 at 1/3 of screen height, the barbed wire is in the central 1/3 at 2/3 of screen height, and the Old Seoul ruins are in the right bottom 2/3 at 2/3 of screen height., Wide shot of crossing the border, 10 PM, clear, \"Somyung\" is fleeing to Old Seoul with evidence. The border is shining with barbed wire and warning lights, and the sound of pursuing drones is getting closer. In the background, the dark ruins of Old Seoul welcome \"Somyung\". Negative: not exaggerating the border's security elements, no modern objects in the background.",
+      "text_11": "\"Somyung\" is positioned on the left side of the screen at the left 1/3 (at half the screen height), the mastermind on the right side at the right 1/3 (at half the screen height), with the cityscape as the background. The glass railing and city lights are at the central lower 2/3 (at two-thirds of the screen height)., Medium shot for dialogue, close-up for emotions, 2 PM, cloudy, \"Somyung\" confronts the mastermind behind the conspiracy on the rooftop of a high-rise building in Shin Seoul, with city lights visible beyond the glass railing. Wind is howling, heightening the tension. Avoid making the mastermind's clothing or items too modern. Ensure that the city lights in the background are not too bright or flashy.",
+      "text_12": "Use various compositions according to the action: '소명' fighting in the center of the screen, with enemies appearing around. '소명' is positioned in the central 1/3 (half of the screen height), enemies in the left 1/3 and right 1/3 (one-third of the screen height), and broken bridges and vehicles in the bottom 2/3 (two-thirds of the screen height)., Wide, medium, close-up shot mix, 3 PM, cloudy, An action scene resolving conflict. The background is the boundary area where New Seoul and Old Seoul meet, with broken bridges, tangled rebar, and abandoned vehicles scattered around. Dust and smoke fill the air. Avoid too many characters in the action scene and ensure no modern objects are visible in the background.",
+      "text_13": "In the wide shot of the city, the city is positioned in the center of the screen, the close-up of \"소명\" is positioned on the right side of the screen, and the sun is rising from the left side of the screen. Wide shot: New Seoul or Old Seoul is in the central 2/3 (3/4 of screen height), the sun is in the upper left 1/3 (1/4 of screen height). Close-up: \"소명\" is in the right 1/3 (3/4 of screen height)., Wide shot of the city, close-up of \"소명\", 6 AM dawn, clear, It shows the ending of the story. The background is the sunrise in the dawn sky of New Seoul with clean air, or the quiet ruins of Old Seoul, expressing hope or solemnity according to \"소명\"'s choice. Avoid having too many characters in the scene and ensure no modern objects are in the background.",
+      "text": [
+        "207",
+        0
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  },
+  "207": {
+    "inputs": {
+      "delimiter": ", ",
+      "clean_whitespace": "true",
+      "text_a": [
+        "201",
+        3
+      ],
+      "text_b": [
+        "201",
+        2
+      ],
+      "text_c": [
+        "201",
+        1
+      ],
+      "text_d": [
+        "201",
+        0
+      ]
+    },
+    "class_type": "Text Concatenate",
+    "_meta": {
+      "title": "Text Concatenate"
+    }
+  },
+  "209": {
+    "inputs": {
+      "delimiter": " is ",
+      "string1": [
+        "199",
+        3
+      ],
+      "string2": [
+        "199",
+        5
+      ]
+    },
+    "class_type": "JoinStrings",
+    "_meta": {
+      "title": "Join Strings"
+    }
+  },
+  "210": {
+    "inputs": {
+      "delimiter": " is ",
+      "string1": [
+        "199",
+        1
+      ],
+      "string2": [
+        "199",
+        4
+      ]
+    },
+    "class_type": "JoinStrings",
+    "_meta": {
+      "title": "Join Strings"
+    }
+  },
+  "213": {
+    "inputs": {
+      "find": [
+        "199",
+        0
+      ],
+      "replace": [
+        "199",
+        1
+      ],
+      "text": [
+        "202",
+        0
+      ]
+    },
+    "class_type": "Text Find and Replace",
+    "_meta": {
+      "title": "Text Find and Replace"
+    }
+  },
+  "214": {
+    "inputs": {
+      "text_0": "\"Somyung\" is positioned on the right side of the screen, at the right 1/3 and half the screen height. The facility's entrance is on the left side, at the left 1/3 and two-thirds the screen height. \"Somyung\" is moving carefully from right to left. The hologram display is in the center bottom, at one-fourth the screen height., medium shot, 8 PM, clear, \"Somyung\" sneaks into the power facility in New Seoul. The background is a high-tech facility surrounded by smooth metal walls, flashing LED lights, and hologram displays, with security drones and laser sensors placed everywhere. \"Somyung\" carefully steals electricity in the darkness. Adjust lighting so that \"Somyung\"'s face is not too brightly lit and ensure no other characters appear in the background.",
+      "text_1": "\"Somyung\" is moving from the center of the screen to the left, with the border's barbed wire and watchtowers positioned on the right side of the screen to create a tense composition. Position \"Somyung\" at the screen's central 1/3 (at 1/3 of the screen height), barbed wire and watchtowers at the screen's right 1/3 (at 2/3 of the screen height), and New Seoul lights at the screen's left upper part (at 1/4 of the screen height)., Wide shot, Evening 9 PM, clear, \"Somyung\" is carrying the stolen power cell and crossing over to Old Seoul. The border is heavily guarded with barbed wire, watchtowers, and armed drones. The bright lights of New Seoul shine from afar, and the dark shadows of Old Seoul block the way ahead. The sound of weeds rustling in the wind adds to the tension. Avoid modern road signs or signboards on \"Somyung\"'s path. Ensure the border's security elements are not exaggerated.",
+      "text_2": "For the close-up: 'Somyung's face is in the center of the screen at 3/4 of the screen height. For the wide shot: Zombies are in the left 1/3 at 1/2 of the screen height, 'Somyung' is in the right 1/3 at 1/2 of the screen height, and ruins are in the bottom 2/3 of the screen. 'Somyung's close-up is in the center of the screen, zombies appear from left to right on the screen, and 'Somyung' is fleeing to the right side of the screen., Close-up of 'Somyung's face, wide shot of zombies, 10 PM, clear, In the ruins of old Seoul, 'Somyung' barely escapes a zombie attack. The background is filled with broken asphalt, tangled vines, and collapsed shopping districts, with zombies suddenly emerging from dark alleys. Moonlight reflects off the glass of broken vehicles. Negative: Be careful not to make the zombies' movements too fast or too slow, and ensure that no modern objects are visible in the background.",
+      "text_3": "The camera shows the inside of the laboratory from Somyung's point of view, with the laboratory entrance in the center of the screen, and experimental equipment scattered on the left and right. Laboratory entrance is in the central 1/3 (2/3 of screen height), broken glass tube is in the left 1/3 (1/3 of screen height), old computer and bottles are in the right 1/3 (1/3 of screen height). Somyung is not visible in POV., Somyung's POV shot, 10 AM, clear, Somyung discovers an abandoned laboratory in Old Seoul. The laboratory is covered in dust and moss, with broken glass tubes, old computers, and bottles containing strange liquids from failed experiments scattered around. Light seeping through the windows illuminates the dust. Ensure that no modern equipment is visible inside the laboratory and maintain balance so that the dust and moss are not exaggerated.",
+      "text_4": "Robu is positioned in the center of the screen at the central 1/3 and at 2/3 of the screen height, Somyung is standing on the left side at the left 1/3 and at 1/2 of the screen height, and as Robu activates, light fills the screen. The old equipment and posters are in the right 1/3 and bottom at 1/4 of the screen height., Medium shot of Robu being activated, 11 AM, clear, Somyung activates AI robot Robu in the laboratory. Robu is standing covered in dust and vines, then awakens with light and mechanical sounds. In the background, the laboratory's old equipment is flickering and operating, and there are old posters on the wall. Ensure that Robu's design or movement is not too modern or futuristic, and maintain balance so that the old equipment's operation is not exaggerated.",
+      "text_5": "\"Somyung\" is positioned at the left 1/3 of the screen (at half the screen height), \"로부\" is at the right 1/3 of the screen (at two-thirds the screen height). The hologram is at the central 1/3 (at one-third the screen height). Monitors and charts are at the bottom of the screen (at one-fourth the screen height)., A two-shot of \"Somyung\" and \"로부\", 12 PM, clear, Generate an image of \"로부\" explaining the origin of the zombie virus to \"Somyung\" inside a laboratory. The conversation is taking place, with \"로부\" activating a hologram that displays the virus structure and data. In the background, there are old monitors and charts in the laboratory. Negative: Ensure the hologram design is not too modern, and make sure the monitors and charts in the background are not too complex or modern in design.",
+      "text_6": "Compose the scene with \"Somyung\" on the left side of the screen, the survivor on the right side of the screen, and the shelter entrance in the center. For external: The building is in the center 2/3 of the screen (3/4 of screen height). For internal: \"Somyung\" is on the right 1/3 of the screen (1/2 of screen height), the guard robot is on the left 1/3 of the screen (1/3 of screen height), and the hologram sign is at the bottom center of the screen (1/4 of screen height)., \"Somyung\" and companion's two shot, 1 PM, cloudy, Generate an image of \"Somyung\" meeting a survivor in Old Seoul. The survivor is hiding in a shelter made of waste materials, with rusty iron plates, piled-up canned goods, a broken radio, and traces of survival scattered in the background. Zombie howls are heard in the distance. Avoid making the survivor's clothing or items too modern; ensure that no modern items are visible inside the shelter.",
+      "text_7": "For the building exterior shot, the building is positioned in the center of the screen; for the interior, 'Somyung' moves from the right side to the left side of the screen, with the guard robot on the left side of the screen. In close-ups: Evidence (tablet) is in the center of the screen at 3/4 of the screen height, 'Somyung' is on the right 1/3 of the screen at 1/2 of the screen height, large screen is on the left 1/3 of the screen at 1/2 of the screen height, night view is on the upper left of the screen at 1/3 of the screen height., Wide shot of the building exterior, medium shot of the interior, 7 PM, clear, Generate an image of 'Somyung' infiltrating a high-security building in 신서울, which is a massive structure of glass and steel, armed with biometric scanners, AI guard robots, and moving surveillance cameras. In the background, there are hologram signs and the quiet humming of machinery, but ensure the building's design is not too modern and maintain balance so that the internal technology is not too futuristic.",
+      "text_8": "The evidence is close-up in the center of the screen, \"Somyung\" is positioned on the right side of the screen and in the central 1/3 (1/3 of screen height), the night view outside the window is visible on the left side of the screen. The security officer is in the left 1/3 (1/3 of screen height), the drone is in the upper 1/3 (1/4 of screen height), and the corridor and glass window are in the lower 2/3 (2/3 of screen height)., Close-up of the evidence, close-up of \"Somyung\"'s reaction, Evening 8 PM, clear, \"Somyung\" discovers data that reveals the conspiracy. The background is a sophisticated office, with a large screen on the wall displaying numbers and graphs, and a transparent tablet on the desk. Outside the window, the night view of Shinseoul is visible. Be careful not to make the office design too modern and not to make the night view outside the window too bright or flashy.",
+      "text_9": "Somyung is fleeing in the center of the screen, with pursuing agents appearing from the left side of the screen; the drone is shot from a top-down view. Somyung in the central 1/3 (1/3 of screen height), security agents in the left 1/3 (1/3 of screen height), drone in the upper 1/3 (1/4 of screen height), corridors and glass windows in the lower 2/3 (2/3 of screen height)., Wide shot for action, close-up for intensity, 9 PM, clear, Somyung is being chased by security agents. The background is the high-tech corridors and outdoors of Shin Seoul, with flying drones and high-speed electric motorcycles joining the chase. Neon lights reflect on the building's glass windows, emphasizing the speed. Avoid too many characters in the chase scene and ensure that modern objects are not visible in the background.",
+      "text_10": "\"Somyung\" is running from the right side of the screen to the left, with the border's barbed wire located in the center of the screen. \"Somyung\" moves from the right 1/3 to the left 1/3 at 1/3 of screen height, the barbed wire is in the central 1/3 at 2/3 of screen height, and the Old Seoul ruins are in the right bottom 2/3 at 2/3 of screen height., Wide shot of crossing the border, 10 PM, clear, \"Somyung\" is fleeing to Old Seoul with evidence. The border is shining with barbed wire and warning lights, and the sound of pursuing drones is getting closer. In the background, the dark ruins of Old Seoul welcome \"Somyung\". Negative: not exaggerating the border's security elements, no modern objects in the background.",
+      "text_11": "\"Somyung\" is positioned on the left side of the screen at the left 1/3 (at half the screen height), the mastermind on the right side at the right 1/3 (at half the screen height), with the cityscape as the background. The glass railing and city lights are at the central lower 2/3 (at two-thirds of the screen height)., Medium shot for dialogue, close-up for emotions, 2 PM, cloudy, \"Somyung\" confronts the mastermind behind the conspiracy on the rooftop of a high-rise building in Shin Seoul, with city lights visible beyond the glass railing. Wind is howling, heightening the tension. Avoid making the mastermind's clothing or items too modern. Ensure that the city lights in the background are not too bright or flashy.",
+      "text_12": "Use various compositions according to the action: 'Somyung' fighting in the center of the screen, with enemies appearing around. 'Somyung' is positioned in the central 1/3 (half of the screen height), enemies in the left 1/3 and right 1/3 (one-third of the screen height), and broken bridges and vehicles in the bottom 2/3 (two-thirds of the screen height)., Wide, medium, close-up shot mix, 3 PM, cloudy, An action scene resolving conflict. The background is the boundary area where New Seoul and Old Seoul meet, with broken bridges, tangled rebar, and abandoned vehicles scattered around. Dust and smoke fill the air. Avoid too many characters in the action scene and ensure no modern objects are visible in the background.",
+      "text_13": "In the wide shot of the city, the city is positioned in the center of the screen, the close-up of \"Somyung\" is positioned on the right side of the screen, and the sun is rising from the left side of the screen. Wide shot: New Seoul or Old Seoul is in the central 2/3 (3/4 of screen height), the sun is in the upper left 1/3 (1/4 of screen height). Close-up: \"Somyung\" is in the right 1/3 (3/4 of screen height)., Wide shot of the city, close-up of \"Somyung\", 6 AM dawn, clear, It shows the ending of the story. The background is the sunrise in the dawn sky of New Seoul with clean air, or the quiet ruins of Old Seoul, expressing hope or solemnity according to \"Somyung\"'s choice. Avoid having too many characters in the scene and ensure no modern objects are in the background.",
+      "text": [
+        "213",
+        0
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  },
+  "215": {
+    "inputs": {
+      "find": [
+        "199",
+        2
+      ],
+      "replace": [
+        "199",
+        3
+      ],
+      "text": [
+        "214",
+        0
+      ]
+    },
+    "class_type": "Text Find and Replace",
+    "_meta": {
+      "title": "Text Find and Replace"
+    }
+  },
+  "216": {
+    "inputs": {
+      "text_0": "\"Somyung\" is positioned on the right side of the screen, at the right 1/3 and half the screen height. The facility's entrance is on the left side, at the left 1/3 and two-thirds the screen height. \"Somyung\" is moving carefully from right to left. The hologram display is in the center bottom, at one-fourth the screen height., medium shot, 8 PM, clear, \"Somyung\" sneaks into the power facility in New Seoul. The background is a high-tech facility surrounded by smooth metal walls, flashing LED lights, and hologram displays, with security drones and laser sensors placed everywhere. \"Somyung\" carefully steals electricity in the darkness. Adjust lighting so that \"Somyung\"'s face is not too brightly lit and ensure no other characters appear in the background.",
+      "text_1": "\"Somyung\" is moving from the center of the screen to the left, with the border's barbed wire and watchtowers positioned on the right side of the screen to create a tense composition. Position \"Somyung\" at the screen's central 1/3 (at 1/3 of the screen height), barbed wire and watchtowers at the screen's right 1/3 (at 2/3 of the screen height), and New Seoul lights at the screen's left upper part (at 1/4 of the screen height)., Wide shot, Evening 9 PM, clear, \"Somyung\" is carrying the stolen power cell and crossing over to Old Seoul. The border is heavily guarded with barbed wire, watchtowers, and armed drones. The bright lights of New Seoul shine from afar, and the dark shadows of Old Seoul block the way ahead. The sound of weeds rustling in the wind adds to the tension. Avoid modern road signs or signboards on \"Somyung\"'s path. Ensure the border's security elements are not exaggerated.",
+      "text_2": "For the close-up: 'Somyung's face is in the center of the screen at 3/4 of the screen height. For the wide shot: Zombies are in the left 1/3 at 1/2 of the screen height, 'Somyung' is in the right 1/3 at 1/2 of the screen height, and ruins are in the bottom 2/3 of the screen. 'Somyung's close-up is in the center of the screen, zombies appear from left to right on the screen, and 'Somyung' is fleeing to the right side of the screen., Close-up of 'Somyung's face, wide shot of zombies, 10 PM, clear, In the ruins of old Seoul, 'Somyung' barely escapes a zombie attack. The background is filled with broken asphalt, tangled vines, and collapsed shopping districts, with zombies suddenly emerging from dark alleys. Moonlight reflects off the glass of broken vehicles. Negative: Be careful not to make the zombies' movements too fast or too slow, and ensure that no modern objects are visible in the background.",
+      "text_3": "The camera shows the inside of the laboratory from Somyung's point of view, with the laboratory entrance in the center of the screen, and experimental equipment scattered on the left and right. Laboratory entrance is in the central 1/3 (2/3 of screen height), broken glass tube is in the left 1/3 (1/3 of screen height), old computer and bottles are in the right 1/3 (1/3 of screen height). Somyung is not visible in POV., Somyung's POV shot, 10 AM, clear, Somyung discovers an abandoned laboratory in Old Seoul. The laboratory is covered in dust and moss, with broken glass tubes, old computers, and bottles containing strange liquids from failed experiments scattered around. Light seeping through the windows illuminates the dust. Ensure that no modern equipment is visible inside the laboratory and maintain balance so that the dust and moss are not exaggerated.",
+      "text_4": "Robu is positioned in the center of the screen at the central 1/3 and at 2/3 of the screen height, Somyung is standing on the left side at the left 1/3 and at 1/2 of the screen height, and as Robu activates, light fills the screen. The old equipment and posters are in the right 1/3 and bottom at 1/4 of the screen height., Medium shot of Robu being activated, 11 AM, clear, Somyung activates AI robot Robu in the laboratory. Robu is standing covered in dust and vines, then awakens with light and mechanical sounds. In the background, the laboratory's old equipment is flickering and operating, and there are old posters on the wall. Ensure that Robu's design or movement is not too modern or futuristic, and maintain balance so that the old equipment's operation is not exaggerated.",
+      "text_5": "\"Somyung\" is positioned at the left 1/3 of the screen (at half the screen height), \"Robu\" is at the right 1/3 of the screen (at two-thirds the screen height). The hologram is at the central 1/3 (at one-third the screen height). Monitors and charts are at the bottom of the screen (at one-fourth the screen height)., A two-shot of \"Somyung\" and \"Robu\", 12 PM, clear, Generate an image of \"Robu\" explaining the origin of the zombie virus to \"Somyung\" inside a laboratory. The conversation is taking place, with \"Robu\" activating a hologram that displays the virus structure and data. In the background, there are old monitors and charts in the laboratory. Negative: Ensure the hologram design is not too modern, and make sure the monitors and charts in the background are not too complex or modern in design.",
+      "text_6": "Compose the scene with \"Somyung\" on the left side of the screen, the survivor on the right side of the screen, and the shelter entrance in the center. For external: The building is in the center 2/3 of the screen (3/4 of screen height). For internal: \"Somyung\" is on the right 1/3 of the screen (1/2 of screen height), the guard robot is on the left 1/3 of the screen (1/3 of screen height), and the hologram sign is at the bottom center of the screen (1/4 of screen height)., \"Somyung\" and companion's two shot, 1 PM, cloudy, Generate an image of \"Somyung\" meeting a survivor in Old Seoul. The survivor is hiding in a shelter made of waste materials, with rusty iron plates, piled-up canned goods, a broken radio, and traces of survival scattered in the background. Zombie howls are heard in the distance. Avoid making the survivor's clothing or items too modern; ensure that no modern items are visible inside the shelter.",
+      "text_7": "For the building exterior shot, the building is positioned in the center of the screen; for the interior, 'Somyung' moves from the right side to the left side of the screen, with the guard robot on the left side of the screen. In close-ups: Evidence (tablet) is in the center of the screen at 3/4 of the screen height, 'Somyung' is on the right 1/3 of the screen at 1/2 of the screen height, large screen is on the left 1/3 of the screen at 1/2 of the screen height, night view is on the upper left of the screen at 1/3 of the screen height., Wide shot of the building exterior, medium shot of the interior, 7 PM, clear, Generate an image of 'Somyung' infiltrating a high-security building in 신서울, which is a massive structure of glass and steel, armed with biometric scanners, AI guard robots, and moving surveillance cameras. In the background, there are hologram signs and the quiet humming of machinery, but ensure the building's design is not too modern and maintain balance so that the internal technology is not too futuristic.",
+      "text_8": "The evidence is close-up in the center of the screen, \"Somyung\" is positioned on the right side of the screen and in the central 1/3 (1/3 of screen height), the night view outside the window is visible on the left side of the screen. The security officer is in the left 1/3 (1/3 of screen height), the drone is in the upper 1/3 (1/4 of screen height), and the corridor and glass window are in the lower 2/3 (2/3 of screen height)., Close-up of the evidence, close-up of \"Somyung\"'s reaction, Evening 8 PM, clear, \"Somyung\" discovers data that reveals the conspiracy. The background is a sophisticated office, with a large screen on the wall displaying numbers and graphs, and a transparent tablet on the desk. Outside the window, the night view of Shinseoul is visible. Be careful not to make the office design too modern and not to make the night view outside the window too bright or flashy.",
+      "text_9": "Somyung is fleeing in the center of the screen, with pursuing agents appearing from the left side of the screen; the drone is shot from a top-down view. Somyung in the central 1/3 (1/3 of screen height), security agents in the left 1/3 (1/3 of screen height), drone in the upper 1/3 (1/4 of screen height), corridors and glass windows in the lower 2/3 (2/3 of screen height)., Wide shot for action, close-up for intensity, 9 PM, clear, Somyung is being chased by security agents. The background is the high-tech corridors and outdoors of Shin Seoul, with flying drones and high-speed electric motorcycles joining the chase. Neon lights reflect on the building's glass windows, emphasizing the speed. Avoid too many characters in the chase scene and ensure that modern objects are not visible in the background.",
+      "text_10": "\"Somyung\" is running from the right side of the screen to the left, with the border's barbed wire located in the center of the screen. \"Somyung\" moves from the right 1/3 to the left 1/3 at 1/3 of screen height, the barbed wire is in the central 1/3 at 2/3 of screen height, and the Old Seoul ruins are in the right bottom 2/3 at 2/3 of screen height., Wide shot of crossing the border, 10 PM, clear, \"Somyung\" is fleeing to Old Seoul with evidence. The border is shining with barbed wire and warning lights, and the sound of pursuing drones is getting closer. In the background, the dark ruins of Old Seoul welcome \"Somyung\". Negative: not exaggerating the border's security elements, no modern objects in the background.",
+      "text_11": "\"Somyung\" is positioned on the left side of the screen at the left 1/3 (at half the screen height), the mastermind on the right side at the right 1/3 (at half the screen height), with the cityscape as the background. The glass railing and city lights are at the central lower 2/3 (at two-thirds of the screen height)., Medium shot for dialogue, close-up for emotions, 2 PM, cloudy, \"Somyung\" confronts the mastermind behind the conspiracy on the rooftop of a high-rise building in Shin Seoul, with city lights visible beyond the glass railing. Wind is howling, heightening the tension. Avoid making the mastermind's clothing or items too modern. Ensure that the city lights in the background are not too bright or flashy.",
+      "text_12": "Use various compositions according to the action: 'Somyung' fighting in the center of the screen, with enemies appearing around. 'Somyung' is positioned in the central 1/3 (half of the screen height), enemies in the left 1/3 and right 1/3 (one-third of the screen height), and broken bridges and vehicles in the bottom 2/3 (two-thirds of the screen height)., Wide, medium, close-up shot mix, 3 PM, cloudy, An action scene resolving conflict. The background is the boundary area where New Seoul and Old Seoul meet, with broken bridges, tangled rebar, and abandoned vehicles scattered around. Dust and smoke fill the air. Avoid too many characters in the action scene and ensure no modern objects are visible in the background.",
+      "text_13": "In the wide shot of the city, the city is positioned in the center of the screen, the close-up of \"Somyung\" is positioned on the right side of the screen, and the sun is rising from the left side of the screen. Wide shot: New Seoul or Old Seoul is in the central 2/3 (3/4 of screen height), the sun is in the upper left 1/3 (1/4 of screen height). Close-up: \"Somyung\" is in the right 1/3 (3/4 of screen height)., Wide shot of the city, close-up of \"Somyung\", 6 AM dawn, clear, It shows the ending of the story. The background is the sunrise in the dawn sky of New Seoul with clean air, or the quiet ruins of Old Seoul, expressing hope or solemnity according to \"Somyung\"'s choice. Avoid having too many characters in the scene and ensure no modern objects are in the background.",
+      "text": [
+        "215",
+        0
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  },
+  "219": {
+    "inputs": {
+      "text_0": "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, \"Somyung\" is positioned on the right side of the screen, at the right 1/3 and half the screen height. The facility's entrance is on the left side, at the left 1/3 and two-thirds the screen height. \"Somyung\" is moving carefully from right to left. The hologram display is in the center bottom, at one-fourth the screen height., medium shot, 8 PM, clear, \"Somyung\" sneaks into the power facility in New Seoul. The background is a high-tech facility surrounded by smooth metal walls, flashing LED lights, and hologram displays, with security drones and laser sensors placed everywhere. \"Somyung\" carefully steals electricity in the darkness. Adjust lighting so that \"Somyung\"'s face is not too brightly lit and ensure no other characters appear in the background., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+      "text_1": "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, \"Somyung\" is moving from the center of the screen to the left, with the border's barbed wire and watchtowers positioned on the right side of the screen to create a tense composition. Position \"Somyung\" at the screen's central 1/3 (at 1/3 of the screen height), barbed wire and watchtowers at the screen's right 1/3 (at 2/3 of the screen height), and New Seoul lights at the screen's left upper part (at 1/4 of the screen height)., Wide shot, Evening 9 PM, clear, \"Somyung\" is carrying the stolen power cell and crossing over to Old Seoul. The border is heavily guarded with barbed wire, watchtowers, and armed drones. The bright lights of New Seoul shine from afar, and the dark shadows of Old Seoul block the way ahead. The sound of weeds rustling in the wind adds to the tension. Avoid modern road signs or signboards on \"Somyung\"'s path. Ensure the border's security elements are not exaggerated., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+      "text_2": "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, For the close-up: 'Somyung's face is in the center of the screen at 3/4 of the screen height. For the wide shot: Zombies are in the left 1/3 at 1/2 of the screen height, 'Somyung' is in the right 1/3 at 1/2 of the screen height, and ruins are in the bottom 2/3 of the screen. 'Somyung's close-up is in the center of the screen, zombies appear from left to right on the screen, and 'Somyung' is fleeing to the right side of the screen., Close-up of 'Somyung's face, wide shot of zombies, 10 PM, clear, In the ruins of old Seoul, 'Somyung' barely escapes a zombie attack. The background is filled with broken asphalt, tangled vines, and collapsed shopping districts, with zombies suddenly emerging from dark alleys. Moonlight reflects off the glass of broken vehicles. Negative: Be careful not to make the zombies' movements too fast or too slow, and ensure that no modern objects are visible in the background., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+      "text_3": "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, The camera shows the inside of the laboratory from Somyung's point of view, with the laboratory entrance in the center of the screen, and experimental equipment scattered on the left and right. Laboratory entrance is in the central 1/3 (2/3 of screen height), broken glass tube is in the left 1/3 (1/3 of screen height), old computer and bottles are in the right 1/3 (1/3 of screen height). Somyung is not visible in POV., Somyung's POV shot, 10 AM, clear, Somyung discovers an abandoned laboratory in Old Seoul. The laboratory is covered in dust and moss, with broken glass tubes, old computers, and bottles containing strange liquids from failed experiments scattered around. Light seeping through the windows illuminates the dust. Ensure that no modern equipment is visible inside the laboratory and maintain balance so that the dust and moss are not exaggerated., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+      "text_4": "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, Robu is Humanoid robot, bundles of wires visible on the upper body, Robu is positioned in the center of the screen at the central 1/3 and at 2/3 of the screen height, Somyung is standing on the left side at the left 1/3 and at 1/2 of the screen height, and as Robu activates, light fills the screen. The old equipment and posters are in the right 1/3 and bottom at 1/4 of the screen height., Medium shot of Robu being activated, 11 AM, clear, Somyung activates AI robot Robu in the laboratory. Robu is standing covered in dust and vines, then awakens with light and mechanical sounds. In the background, the laboratory's old equipment is flickering and operating, and there are old posters on the wall. Ensure that Robu's design or movement is not too modern or futuristic, and maintain balance so that the old equipment's operation is not exaggerated., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+      "text_5": "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, Robu is Humanoid robot, bundles of wires visible on the upper body, \"Somyung\" is positioned at the left 1/3 of the screen (at half the screen height), \"Robu\" is at the right 1/3 of the screen (at two-thirds the screen height). The hologram is at the central 1/3 (at one-third the screen height). Monitors and charts are at the bottom of the screen (at one-fourth the screen height)., A two-shot of \"Somyung\" and \"Robu\", 12 PM, clear, Generate an image of \"Robu\" explaining the origin of the zombie virus to \"Somyung\" inside a laboratory. The conversation is taking place, with \"Robu\" activating a hologram that displays the virus structure and data. In the background, there are old monitors and charts in the laboratory. Negative: Ensure the hologram design is not too modern, and make sure the monitors and charts in the background are not too complex or modern in design., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+      "text_6": "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, Compose the scene with \"Somyung\" on the left side of the screen, the survivor on the right side of the screen, and the shelter entrance in the center. For external: The building is in the center 2/3 of the screen (3/4 of screen height). For internal: \"Somyung\" is on the right 1/3 of the screen (1/2 of screen height), the guard robot is on the left 1/3 of the screen (1/3 of screen height), and the hologram sign is at the bottom center of the screen (1/4 of screen height)., \"Somyung\" and companion's two shot, 1 PM, cloudy, Generate an image of \"Somyung\" meeting a survivor in Old Seoul. The survivor is hiding in a shelter made of waste materials, with rusty iron plates, piled-up canned goods, a broken radio, and traces of survival scattered in the background. Zombie howls are heard in the distance. Avoid making the survivor's clothing or items too modern; ensure that no modern items are visible inside the shelter., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+      "text_7": "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, For the building exterior shot, the building is positioned in the center of the screen; for the interior, 'Somyung' moves from the right side to the left side of the screen, with the guard robot on the left side of the screen. In close-ups: Evidence (tablet) is in the center of the screen at 3/4 of the screen height, 'Somyung' is on the right 1/3 of the screen at 1/2 of the screen height, large screen is on the left 1/3 of the screen at 1/2 of the screen height, night view is on the upper left of the screen at 1/3 of the screen height., Wide shot of the building exterior, medium shot of the interior, 7 PM, clear, Generate an image of 'Somyung' infiltrating a high-security building in 신서울, which is a massive structure of glass and steel, armed with biometric scanners, AI guard robots, and moving surveillance cameras. In the background, there are hologram signs and the quiet humming of machinery, but ensure the building's design is not too modern and maintain balance so that the internal technology is not too futuristic., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+      "text_8": "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, The evidence is close-up in the center of the screen, \"Somyung\" is positioned on the right side of the screen and in the central 1/3 (1/3 of screen height), the night view outside the window is visible on the left side of the screen. The security officer is in the left 1/3 (1/3 of screen height), the drone is in the upper 1/3 (1/4 of screen height), and the corridor and glass window are in the lower 2/3 (2/3 of screen height)., Close-up of the evidence, close-up of \"Somyung\"'s reaction, Evening 8 PM, clear, \"Somyung\" discovers data that reveals the conspiracy. The background is a sophisticated office, with a large screen on the wall displaying numbers and graphs, and a transparent tablet on the desk. Outside the window, the night view of Shinseoul is visible. Be careful not to make the office design too modern and not to make the night view outside the window too bright or flashy., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+      "text_9": "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, Somyung is fleeing in the center of the screen, with pursuing agents appearing from the left side of the screen; the drone is shot from a top-down view. Somyung in the central 1/3 (1/3 of screen height), security agents in the left 1/3 (1/3 of screen height), drone in the upper 1/3 (1/4 of screen height), corridors and glass windows in the lower 2/3 (2/3 of screen height)., Wide shot for action, close-up for intensity, 9 PM, clear, Somyung is being chased by security agents. The background is the high-tech corridors and outdoors of Shin Seoul, with flying drones and high-speed electric motorcycles joining the chase. Neon lights reflect on the building's glass windows, emphasizing the speed. Avoid too many characters in the chase scene and ensure that modern objects are not visible in the background., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+      "text_10": "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, \"Somyung\" is running from the right side of the screen to the left, with the border's barbed wire located in the center of the screen. \"Somyung\" moves from the right 1/3 to the left 1/3 at 1/3 of screen height, the barbed wire is in the central 1/3 at 2/3 of screen height, and the Old Seoul ruins are in the right bottom 2/3 at 2/3 of screen height., Wide shot of crossing the border, 10 PM, clear, \"Somyung\" is fleeing to Old Seoul with evidence. The border is shining with barbed wire and warning lights, and the sound of pursuing drones is getting closer. In the background, the dark ruins of Old Seoul welcome \"Somyung\". Negative: not exaggerating the border's security elements, no modern objects in the background., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+      "text_11": "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, \"Somyung\" is positioned on the left side of the screen at the left 1/3 (at half the screen height), the mastermind on the right side at the right 1/3 (at half the screen height), with the cityscape as the background. The glass railing and city lights are at the central lower 2/3 (at two-thirds of the screen height)., Medium shot for dialogue, close-up for emotions, 2 PM, cloudy, \"Somyung\" confronts the mastermind behind the conspiracy on the rooftop of a high-rise building in Shin Seoul, with city lights visible beyond the glass railing. Wind is howling, heightening the tension. Avoid making the mastermind's clothing or items too modern. Ensure that the city lights in the background are not too bright or flashy., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+      "text_12": "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, Use various compositions according to the action: 'Somyung' fighting in the center of the screen, with enemies appearing around. 'Somyung' is positioned in the central 1/3 (half of the screen height), enemies in the left 1/3 and right 1/3 (one-third of the screen height), and broken bridges and vehicles in the bottom 2/3 (two-thirds of the screen height)., Wide, medium, close-up shot mix, 3 PM, cloudy, An action scene resolving conflict. The background is the boundary area where New Seoul and Old Seoul meet, with broken bridges, tangled rebar, and abandoned vehicles scattered around. Dust and smoke fill the air. Avoid too many characters in the action scene and ensure no modern objects are visible in the background., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+      "text_13": "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, In the wide shot of the city, the city is positioned in the center of the screen, the close-up of \"Somyung\" is positioned on the right side of the screen, and the sun is rising from the left side of the screen. Wide shot: New Seoul or Old Seoul is in the central 2/3 (3/4 of screen height), the sun is in the upper left 1/3 (1/4 of screen height). Close-up: \"Somyung\" is in the right 1/3 (3/4 of screen height)., Wide shot of the city, close-up of \"Somyung\", 6 AM dawn, clear, It shows the ending of the story. The background is the sunrise in the dawn sky of New Seoul with clean air, or the quiet ruins of Old Seoul, expressing hope or solemnity according to \"Somyung\"'s choice. Avoid having too many characters in the scene and ensure no modern objects are in the background., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+      "text": [
+        "194",
+        0
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  }
+}

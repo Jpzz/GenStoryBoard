@@ -1,0 +1,2438 @@
+{
+  "id": "2a8f679b-9976-424c-ac38-5a7fa8ae3d69",
+  "revision": 0,
+  "last_node_id": 222,
+  "last_link_id": 259,
+  "nodes": [
+    {
+      "id": 54,
+      "type": "SetNode",
+      "pos": [
+        -1700,
+        570
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "link": 53
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_model",
+      "properties": {
+        "previousName": "model"
+      },
+      "widgets_values": [
+        "model"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 55,
+      "type": "SetNode",
+      "pos": [
+        -1720,
+        150
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "link": 55
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_clip",
+      "properties": {
+        "previousName": "clip"
+      },
+      "widgets_values": [
+        "clip"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 56,
+      "type": "SetNode",
+      "pos": [
+        -1720,
+        250
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "link": 56
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_vae",
+      "properties": {
+        "previousName": "vae"
+      },
+      "widgets_values": [
+        "vae"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 87,
+      "type": "SDXLEmptyLatentSizePicker+",
+      "pos": [
+        -1080,
+        630
+      ],
+      "size": [
+        403.1999816894531,
+        170
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            82
+          ]
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_essentials",
+        "ver": "1.1.0",
+        "Node name for S&R": "SDXLEmptyLatentSizePicker+"
+      },
+      "widgets_values": [
+        "1280x768 (1.67)",
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 88,
+      "type": "GetNode",
+      "pos": [
+        -1380,
+        270
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            83,
+            84
+          ]
+        }
+      ],
+      "title": "Get_clip",
+      "properties": {},
+      "widgets_values": [
+        "clip"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 90,
+      "type": "GetNode",
+      "pos": [
+        -1380,
+        380
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            86
+          ]
+        }
+      ],
+      "title": "Get_prompt",
+      "properties": {},
+      "widgets_values": [
+        "prompt"
+      ]
+    },
+    {
+      "id": 91,
+      "type": "GetNode",
+      "pos": [
+        -1380,
+        490
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            87
+          ]
+        }
+      ],
+      "title": "Get_model",
+      "properties": {},
+      "widgets_values": [
+        "model"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 92,
+      "type": "GetNode",
+      "pos": [
+        -230,
+        430
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            88
+          ]
+        }
+      ],
+      "title": "Get_vae",
+      "properties": {},
+      "widgets_values": [
+        "vae"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 141,
+      "type": "SetNode",
+      "pos": [
+        -230,
+        530
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "link": 161
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_pos_con",
+      "properties": {
+        "previousName": "pos_con"
+      },
+      "widgets_values": [
+        "pos_con"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 142,
+      "type": "SetNode",
+      "pos": [
+        -230,
+        630
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "link": 135
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_neg_con",
+      "properties": {
+        "previousName": "neg_con"
+      },
+      "widgets_values": [
+        "neg_con"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 16,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -1080,
+        380
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 84
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            18,
+            135
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 12,
+      "type": "ApplyFBCacheOnModel",
+      "pos": [
+        -2160,
+        570
+      ],
+      "size": [
+        405.5999755859375,
+        154
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 168
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            53
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "wavespeed",
+        "ver": "1.1.8",
+        "Node name for S&R": "ApplyFBCacheOnModel"
+      },
+      "widgets_values": [
+        "diffusion_model",
+        0.12000000000000002,
+        0,
+        1,
+        -1
+      ]
+    },
+    {
+      "id": 130,
+      "type": "SetNode",
+      "pos": [
+        280,
+        120
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "link": 127
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_1st_sampling",
+      "properties": {
+        "previousName": "1st_sampling"
+      },
+      "widgets_values": [
+        "1st_sampling"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 19,
+      "type": "VAEDecode",
+      "pos": [
+        60,
+        130
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 22
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 88
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            127,
+            146
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 149,
+      "type": "SaveImageWebsocket",
+      "pos": [
+        170,
+        250
+      ],
+      "size": [
+        226.79998779296875,
+        246
+      ],
+      "flags": {},
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 146
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImageWebsocket"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 17,
+      "type": "KSampler",
+      "pos": [
+        -330,
+        130
+      ],
+      "size": [
+        315,
+        474
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 87
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 160
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 18
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 82
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            22
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        1024589045284380,
+        "randomize",
+        20,
+        1,
+        "euler",
+        "simple",
+        1
+      ]
+    },
+    {
+      "id": 15,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -1080,
+        130
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 83
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 86
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            159
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 166,
+      "type": "FluxGuidance",
+      "pos": [
+        -670,
+        130
+      ],
+      "size": [
+        317.4000244140625,
+        58
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 159
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            160,
+            161
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "FluxGuidance"
+      },
+      "widgets_values": [
+        4
+      ]
+    },
+    {
+      "id": 11,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -2070,
+        120
+      ],
+      "size": [
+        315,
+        98
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            167
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            55
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            56
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "flux\\flux1-dev-fp8.safetensors"
+      ]
+    },
+    {
+      "id": 146,
+      "type": "easy loraStackApply",
+      "pos": [
+        -2020,
+        280
+      ],
+      "size": [
+        252,
+        66
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "link": 137
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 167
+        },
+        {
+          "name": "optional_clip",
+          "shape": 7,
+          "type": "CLIP",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            168
+          ]
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-easy-use",
+        "ver": "1.2.9",
+        "Node name for S&R": "easy loraStackApply"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 131,
+      "type": "GetNode",
+      "pos": [
+        -2520,
+        -290
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            129
+          ]
+        }
+      ],
+      "title": "Get_1st_sampling",
+      "properties": {},
+      "widgets_values": [
+        "1st_sampling"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 201,
+      "type": "SplitPromptNode",
+      "pos": [
+        -2470,
+        1080
+      ],
+      "size": [
+        330,
+        86
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "zipped_prompt",
+          "type": "ZIPPED_PROMPT",
+          "link": 207
+        }
+      ],
+      "outputs": [
+        {
+          "name": "scene_desc",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            219
+          ]
+        },
+        {
+          "name": "time_weather",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            218
+          ]
+        },
+        {
+          "name": "camera_shot",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            217
+          ]
+        },
+        {
+          "name": "composition",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            216
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "Jpzz/ComfyUI-VirtualInteraction",
+        "ver": "719aa2937d4d0b690be83beb95a3cc66d196023c",
+        "Node name for S&R": "SplitPromptNode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 207,
+      "type": "Text Concatenate",
+      "pos": [
+        -2080,
+        930
+      ],
+      "size": [
+        315,
+        142
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_a",
+          "shape": 7,
+          "type": "STRING",
+          "link": 216
+        },
+        {
+          "name": "text_b",
+          "shape": 7,
+          "type": "STRING",
+          "link": 217
+        },
+        {
+          "name": "text_c",
+          "shape": 7,
+          "type": "STRING",
+          "link": 218
+        },
+        {
+          "name": "text_d",
+          "shape": 7,
+          "type": "STRING",
+          "link": 219
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            221
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "was-node-suite-comfyui",
+        "ver": "1.0.2",
+        "Node name for S&R": "Text Concatenate"
+      },
+      "widgets_values": [
+        ", ",
+        "true"
+      ]
+    },
+    {
+      "id": 145,
+      "type": "easy loraStack",
+      "pos": [
+        -2490,
+        280
+      ],
+      "size": [
+        418.1999816894531,
+        154
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "optional_lora_stack",
+          "shape": 7,
+          "type": "LORA_STACK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "links": [
+            137
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-easy-use",
+        "ver": "1.2.9",
+        "Node name for S&R": "easy loraStack"
+      },
+      "widgets_values": [
+        true,
+        "simple",
+        1,
+        "FLUX1.0\\PencilSketch_Style - [FLUX - uisato].safetensors",
+        1.0000000000000002,
+        1,
+        1,
+        "FLUX1.0\\sketchV1.safetensors",
+        1.0000000000000002,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": 132,
+      "type": "PreviewImage",
+      "pos": [
+        -2280,
+        -290
+      ],
+      "size": [
+        1300,
+        258
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 129
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 202,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -1740,
+        930
+      ],
+      "size": [
+        210,
+        776
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 221
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            236
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "1.2.4",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "\"Somyung\" is positioned on the right side of the screen, at the right 1/3 and half the screen height. The facility's entrance is on the left side, at the left 1/3 and two-thirds the screen height. \"Somyung\" is moving carefully from right to left. The hologram display is in the center bottom, at one-fourth the screen height., medium shot, 8 PM, clear, \"Somyung\" sneaks into the power facility in New Seoul. The background is a high-tech facility surrounded by smooth metal walls, flashing LED lights, and hologram displays, with security drones and laser sensors placed everywhere. \"Somyung\" carefully steals electricity in the darkness. Adjust lighting so that \"Somyung\"'s face is not too brightly lit and ensure no other characters appear in the background.",
+        "\"Somyung\" is moving from the center of the screen to the left, with the border's barbed wire and watchtowers positioned on the right side of the screen to create a tense composition. Position \"Somyung\" at the screen's central 1/3 (at 1/3 of the screen height), barbed wire and watchtowers at the screen's right 1/3 (at 2/3 of the screen height), and New Seoul lights at the screen's left upper part (at 1/4 of the screen height)., Wide shot, Evening 9 PM, clear, \"Somyung\" is carrying the stolen power cell and crossing over to Old Seoul. The border is heavily guarded with barbed wire, watchtowers, and armed drones. The bright lights of New Seoul shine from afar, and the dark shadows of Old Seoul block the way ahead. The sound of weeds rustling in the wind adds to the tension. Avoid modern road signs or signboards on \"Somyung\"'s path. Ensure the border's security elements are not exaggerated.",
+        "For the close-up: 'Somyung's face is in the center of the screen at 3/4 of the screen height. For the wide shot: Zombies are in the left 1/3 at 1/2 of the screen height, 'Somyung' is in the right 1/3 at 1/2 of the screen height, and ruins are in the bottom 2/3 of the screen. 'Somyung's close-up is in the center of the screen, zombies appear from left to right on the screen, and 'Somyung' is fleeing to the right side of the screen., Close-up of 'Somyung's face, wide shot of zombies, 10 PM, clear, In the ruins of old Seoul, 'Somyung' barely escapes a zombie attack. The background is filled with broken asphalt, tangled vines, and collapsed shopping districts, with zombies suddenly emerging from dark alleys. Moonlight reflects off the glass of broken vehicles. Negative: Be careful not to make the zombies' movements too fast or too slow, and ensure that no modern objects are visible in the background.",
+        "The camera shows the inside of the laboratory from Somyung's point of view, with the laboratory entrance in the center of the screen, and experimental equipment scattered on the left and right. Laboratory entrance is in the central 1/3 (2/3 of screen height), broken glass tube is in the left 1/3 (1/3 of screen height), old computer and bottles are in the right 1/3 (1/3 of screen height). Somyung is not visible in POV., Somyung's POV shot, 10 AM, clear, Somyung discovers an abandoned laboratory in Old Seoul. The laboratory is covered in dust and moss, with broken glass tubes, old computers, and bottles containing strange liquids from failed experiments scattered around. Light seeping through the windows illuminates the dust. Ensure that no modern equipment is visible inside the laboratory and maintain balance so that the dust and moss are not exaggerated.",
+        "Robu is positioned in the center of the screen at the central 1/3 and at 2/3 of the screen height, Somyung is standing on the left side at the left 1/3 and at 1/2 of the screen height, and as Robu activates, light fills the screen. The old equipment and posters are in the right 1/3 and bottom at 1/4 of the screen height., Medium shot of Robu being activated, 11 AM, clear, Somyung activates AI robot Robu in the laboratory. Robu is standing covered in dust and vines, then awakens with light and mechanical sounds. In the background, the laboratory's old equipment is flickering and operating, and there are old posters on the wall. Ensure that Robu's design or movement is not too modern or futuristic, and maintain balance so that the old equipment's operation is not exaggerated.",
+        "\"소명\" is positioned at the left 1/3 of the screen (at half the screen height), \"로부\" is at the right 1/3 of the screen (at two-thirds the screen height). The hologram is at the central 1/3 (at one-third the screen height). Monitors and charts are at the bottom of the screen (at one-fourth the screen height)., A two-shot of \"소명\" and \"로부\", 12 PM, clear, Generate an image of \"로부\" explaining the origin of the zombie virus to \"소명\" inside a laboratory. The conversation is taking place, with \"로부\" activating a hologram that displays the virus structure and data. In the background, there are old monitors and charts in the laboratory. Negative: Ensure the hologram design is not too modern, and make sure the monitors and charts in the background are not too complex or modern in design.",
+        "Compose the scene with \"Somyung\" on the left side of the screen, the survivor on the right side of the screen, and the shelter entrance in the center. For external: The building is in the center 2/3 of the screen (3/4 of screen height). For internal: \"Somyung\" is on the right 1/3 of the screen (1/2 of screen height), the guard robot is on the left 1/3 of the screen (1/3 of screen height), and the hologram sign is at the bottom center of the screen (1/4 of screen height)., \"Somyung\" and companion's two shot, 1 PM, cloudy, Generate an image of \"Somyung\" meeting a survivor in Old Seoul. The survivor is hiding in a shelter made of waste materials, with rusty iron plates, piled-up canned goods, a broken radio, and traces of survival scattered in the background. Zombie howls are heard in the distance. Avoid making the survivor's clothing or items too modern; ensure that no modern items are visible inside the shelter.",
+        "For the building exterior shot, the building is positioned in the center of the screen; for the interior, '소명' moves from the right side to the left side of the screen, with the guard robot on the left side of the screen. In close-ups: Evidence (tablet) is in the center of the screen at 3/4 of the screen height, '소명' is on the right 1/3 of the screen at 1/2 of the screen height, large screen is on the left 1/3 of the screen at 1/2 of the screen height, night view is on the upper left of the screen at 1/3 of the screen height., Wide shot of the building exterior, medium shot of the interior, 7 PM, clear, Generate an image of '소명' infiltrating a high-security building in 신서울, which is a massive structure of glass and steel, armed with biometric scanners, AI guard robots, and moving surveillance cameras. In the background, there are hologram signs and the quiet humming of machinery, but ensure the building's design is not too modern and maintain balance so that the internal technology is not too futuristic.",
+        "The evidence is close-up in the center of the screen, \"Somyung\" is positioned on the right side of the screen and in the central 1/3 (1/3 of screen height), the night view outside the window is visible on the left side of the screen. The security officer is in the left 1/3 (1/3 of screen height), the drone is in the upper 1/3 (1/4 of screen height), and the corridor and glass window are in the lower 2/3 (2/3 of screen height)., Close-up of the evidence, close-up of \"Somyung\"'s reaction, Evening 8 PM, clear, \"Somyung\" discovers data that reveals the conspiracy. The background is a sophisticated office, with a large screen on the wall displaying numbers and graphs, and a transparent tablet on the desk. Outside the window, the night view of Shinseoul is visible. Be careful not to make the office design too modern and not to make the night view outside the window too bright or flashy.",
+        "Somyung is fleeing in the center of the screen, with pursuing agents appearing from the left side of the screen; the drone is shot from a top-down view. Somyung in the central 1/3 (1/3 of screen height), security agents in the left 1/3 (1/3 of screen height), drone in the upper 1/3 (1/4 of screen height), corridors and glass windows in the lower 2/3 (2/3 of screen height)., Wide shot for action, close-up for intensity, 9 PM, clear, Somyung is being chased by security agents. The background is the high-tech corridors and outdoors of Shin Seoul, with flying drones and high-speed electric motorcycles joining the chase. Neon lights reflect on the building's glass windows, emphasizing the speed. Avoid too many characters in the chase scene and ensure that modern objects are not visible in the background.",
+        "\"Somyung\" is running from the right side of the screen to the left, with the border's barbed wire located in the center of the screen. \"Somyung\" moves from the right 1/3 to the left 1/3 at 1/3 of screen height, the barbed wire is in the central 1/3 at 2/3 of screen height, and the Old Seoul ruins are in the right bottom 2/3 at 2/3 of screen height., Wide shot of crossing the border, 10 PM, clear, \"Somyung\" is fleeing to Old Seoul with evidence. The border is shining with barbed wire and warning lights, and the sound of pursuing drones is getting closer. In the background, the dark ruins of Old Seoul welcome \"Somyung\". Negative: not exaggerating the border's security elements, no modern objects in the background.",
+        "\"Somyung\" is positioned on the left side of the screen at the left 1/3 (at half the screen height), the mastermind on the right side at the right 1/3 (at half the screen height), with the cityscape as the background. The glass railing and city lights are at the central lower 2/3 (at two-thirds of the screen height)., Medium shot for dialogue, close-up for emotions, 2 PM, cloudy, \"Somyung\" confronts the mastermind behind the conspiracy on the rooftop of a high-rise building in Shin Seoul, with city lights visible beyond the glass railing. Wind is howling, heightening the tension. Avoid making the mastermind's clothing or items too modern. Ensure that the city lights in the background are not too bright or flashy.",
+        "Use various compositions according to the action: '소명' fighting in the center of the screen, with enemies appearing around. '소명' is positioned in the central 1/3 (half of the screen height), enemies in the left 1/3 and right 1/3 (one-third of the screen height), and broken bridges and vehicles in the bottom 2/3 (two-thirds of the screen height)., Wide, medium, close-up shot mix, 3 PM, cloudy, An action scene resolving conflict. The background is the boundary area where New Seoul and Old Seoul meet, with broken bridges, tangled rebar, and abandoned vehicles scattered around. Dust and smoke fill the air. Avoid too many characters in the action scene and ensure no modern objects are visible in the background.",
+        "In the wide shot of the city, the city is positioned in the center of the screen, the close-up of \"소명\" is positioned on the right side of the screen, and the sun is rising from the left side of the screen. Wide shot: New Seoul or Old Seoul is in the central 2/3 (3/4 of screen height), the sun is in the upper left 1/3 (1/4 of screen height). Close-up: \"소명\" is in the right 1/3 (3/4 of screen height)., Wide shot of the city, close-up of \"소명\", 6 AM dawn, clear, It shows the ending of the story. The background is the sunrise in the dawn sky of New Seoul with clean air, or the quiet ruins of Old Seoul, expressing hope or solemnity according to \"소명\"'s choice. Avoid having too many characters in the scene and ensure no modern objects are in the background."
+      ]
+    },
+    {
+      "id": 213,
+      "type": "Text Find and Replace",
+      "pos": [
+        -1490,
+        930
+      ],
+      "size": [
+        273.6666564941406,
+        142
+      ],
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 236
+        },
+        {
+          "name": "find",
+          "type": "STRING",
+          "widget": {
+            "name": "find"
+          },
+          "link": 237
+        },
+        {
+          "name": "replace",
+          "type": "STRING",
+          "widget": {
+            "name": "replace"
+          },
+          "link": 238
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result_text",
+          "type": "STRING",
+          "links": [
+            239
+          ]
+        },
+        {
+          "name": "replacement_count_number",
+          "type": "NUMBER",
+          "links": null
+        },
+        {
+          "name": "replacement_count_float",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "replacement_count_int",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "was-node-suite-comfyui",
+        "ver": "1.0.2",
+        "Node name for S&R": "Text Find and Replace"
+      },
+      "widgets_values": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": 214,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -1180,
+        930
+      ],
+      "size": [
+        140,
+        726
+      ],
+      "flags": {},
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 239
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            240
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "1.2.4",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "\"Somyung\" is positioned on the right side of the screen, at the right 1/3 and half the screen height. The facility's entrance is on the left side, at the left 1/3 and two-thirds the screen height. \"Somyung\" is moving carefully from right to left. The hologram display is in the center bottom, at one-fourth the screen height., medium shot, 8 PM, clear, \"Somyung\" sneaks into the power facility in New Seoul. The background is a high-tech facility surrounded by smooth metal walls, flashing LED lights, and hologram displays, with security drones and laser sensors placed everywhere. \"Somyung\" carefully steals electricity in the darkness. Adjust lighting so that \"Somyung\"'s face is not too brightly lit and ensure no other characters appear in the background.",
+        "\"Somyung\" is moving from the center of the screen to the left, with the border's barbed wire and watchtowers positioned on the right side of the screen to create a tense composition. Position \"Somyung\" at the screen's central 1/3 (at 1/3 of the screen height), barbed wire and watchtowers at the screen's right 1/3 (at 2/3 of the screen height), and New Seoul lights at the screen's left upper part (at 1/4 of the screen height)., Wide shot, Evening 9 PM, clear, \"Somyung\" is carrying the stolen power cell and crossing over to Old Seoul. The border is heavily guarded with barbed wire, watchtowers, and armed drones. The bright lights of New Seoul shine from afar, and the dark shadows of Old Seoul block the way ahead. The sound of weeds rustling in the wind adds to the tension. Avoid modern road signs or signboards on \"Somyung\"'s path. Ensure the border's security elements are not exaggerated.",
+        "For the close-up: 'Somyung's face is in the center of the screen at 3/4 of the screen height. For the wide shot: Zombies are in the left 1/3 at 1/2 of the screen height, 'Somyung' is in the right 1/3 at 1/2 of the screen height, and ruins are in the bottom 2/3 of the screen. 'Somyung's close-up is in the center of the screen, zombies appear from left to right on the screen, and 'Somyung' is fleeing to the right side of the screen., Close-up of 'Somyung's face, wide shot of zombies, 10 PM, clear, In the ruins of old Seoul, 'Somyung' barely escapes a zombie attack. The background is filled with broken asphalt, tangled vines, and collapsed shopping districts, with zombies suddenly emerging from dark alleys. Moonlight reflects off the glass of broken vehicles. Negative: Be careful not to make the zombies' movements too fast or too slow, and ensure that no modern objects are visible in the background.",
+        "The camera shows the inside of the laboratory from Somyung's point of view, with the laboratory entrance in the center of the screen, and experimental equipment scattered on the left and right. Laboratory entrance is in the central 1/3 (2/3 of screen height), broken glass tube is in the left 1/3 (1/3 of screen height), old computer and bottles are in the right 1/3 (1/3 of screen height). Somyung is not visible in POV., Somyung's POV shot, 10 AM, clear, Somyung discovers an abandoned laboratory in Old Seoul. The laboratory is covered in dust and moss, with broken glass tubes, old computers, and bottles containing strange liquids from failed experiments scattered around. Light seeping through the windows illuminates the dust. Ensure that no modern equipment is visible inside the laboratory and maintain balance so that the dust and moss are not exaggerated.",
+        "Robu is positioned in the center of the screen at the central 1/3 and at 2/3 of the screen height, Somyung is standing on the left side at the left 1/3 and at 1/2 of the screen height, and as Robu activates, light fills the screen. The old equipment and posters are in the right 1/3 and bottom at 1/4 of the screen height., Medium shot of Robu being activated, 11 AM, clear, Somyung activates AI robot Robu in the laboratory. Robu is standing covered in dust and vines, then awakens with light and mechanical sounds. In the background, the laboratory's old equipment is flickering and operating, and there are old posters on the wall. Ensure that Robu's design or movement is not too modern or futuristic, and maintain balance so that the old equipment's operation is not exaggerated.",
+        "\"Somyung\" is positioned at the left 1/3 of the screen (at half the screen height), \"로부\" is at the right 1/3 of the screen (at two-thirds the screen height). The hologram is at the central 1/3 (at one-third the screen height). Monitors and charts are at the bottom of the screen (at one-fourth the screen height)., A two-shot of \"Somyung\" and \"로부\", 12 PM, clear, Generate an image of \"로부\" explaining the origin of the zombie virus to \"Somyung\" inside a laboratory. The conversation is taking place, with \"로부\" activating a hologram that displays the virus structure and data. In the background, there are old monitors and charts in the laboratory. Negative: Ensure the hologram design is not too modern, and make sure the monitors and charts in the background are not too complex or modern in design.",
+        "Compose the scene with \"Somyung\" on the left side of the screen, the survivor on the right side of the screen, and the shelter entrance in the center. For external: The building is in the center 2/3 of the screen (3/4 of screen height). For internal: \"Somyung\" is on the right 1/3 of the screen (1/2 of screen height), the guard robot is on the left 1/3 of the screen (1/3 of screen height), and the hologram sign is at the bottom center of the screen (1/4 of screen height)., \"Somyung\" and companion's two shot, 1 PM, cloudy, Generate an image of \"Somyung\" meeting a survivor in Old Seoul. The survivor is hiding in a shelter made of waste materials, with rusty iron plates, piled-up canned goods, a broken radio, and traces of survival scattered in the background. Zombie howls are heard in the distance. Avoid making the survivor's clothing or items too modern; ensure that no modern items are visible inside the shelter.",
+        "For the building exterior shot, the building is positioned in the center of the screen; for the interior, 'Somyung' moves from the right side to the left side of the screen, with the guard robot on the left side of the screen. In close-ups: Evidence (tablet) is in the center of the screen at 3/4 of the screen height, 'Somyung' is on the right 1/3 of the screen at 1/2 of the screen height, large screen is on the left 1/3 of the screen at 1/2 of the screen height, night view is on the upper left of the screen at 1/3 of the screen height., Wide shot of the building exterior, medium shot of the interior, 7 PM, clear, Generate an image of 'Somyung' infiltrating a high-security building in 신서울, which is a massive structure of glass and steel, armed with biometric scanners, AI guard robots, and moving surveillance cameras. In the background, there are hologram signs and the quiet humming of machinery, but ensure the building's design is not too modern and maintain balance so that the internal technology is not too futuristic.",
+        "The evidence is close-up in the center of the screen, \"Somyung\" is positioned on the right side of the screen and in the central 1/3 (1/3 of screen height), the night view outside the window is visible on the left side of the screen. The security officer is in the left 1/3 (1/3 of screen height), the drone is in the upper 1/3 (1/4 of screen height), and the corridor and glass window are in the lower 2/3 (2/3 of screen height)., Close-up of the evidence, close-up of \"Somyung\"'s reaction, Evening 8 PM, clear, \"Somyung\" discovers data that reveals the conspiracy. The background is a sophisticated office, with a large screen on the wall displaying numbers and graphs, and a transparent tablet on the desk. Outside the window, the night view of Shinseoul is visible. Be careful not to make the office design too modern and not to make the night view outside the window too bright or flashy.",
+        "Somyung is fleeing in the center of the screen, with pursuing agents appearing from the left side of the screen; the drone is shot from a top-down view. Somyung in the central 1/3 (1/3 of screen height), security agents in the left 1/3 (1/3 of screen height), drone in the upper 1/3 (1/4 of screen height), corridors and glass windows in the lower 2/3 (2/3 of screen height)., Wide shot for action, close-up for intensity, 9 PM, clear, Somyung is being chased by security agents. The background is the high-tech corridors and outdoors of Shin Seoul, with flying drones and high-speed electric motorcycles joining the chase. Neon lights reflect on the building's glass windows, emphasizing the speed. Avoid too many characters in the chase scene and ensure that modern objects are not visible in the background.",
+        "\"Somyung\" is running from the right side of the screen to the left, with the border's barbed wire located in the center of the screen. \"Somyung\" moves from the right 1/3 to the left 1/3 at 1/3 of screen height, the barbed wire is in the central 1/3 at 2/3 of screen height, and the Old Seoul ruins are in the right bottom 2/3 at 2/3 of screen height., Wide shot of crossing the border, 10 PM, clear, \"Somyung\" is fleeing to Old Seoul with evidence. The border is shining with barbed wire and warning lights, and the sound of pursuing drones is getting closer. In the background, the dark ruins of Old Seoul welcome \"Somyung\". Negative: not exaggerating the border's security elements, no modern objects in the background.",
+        "\"Somyung\" is positioned on the left side of the screen at the left 1/3 (at half the screen height), the mastermind on the right side at the right 1/3 (at half the screen height), with the cityscape as the background. The glass railing and city lights are at the central lower 2/3 (at two-thirds of the screen height)., Medium shot for dialogue, close-up for emotions, 2 PM, cloudy, \"Somyung\" confronts the mastermind behind the conspiracy on the rooftop of a high-rise building in Shin Seoul, with city lights visible beyond the glass railing. Wind is howling, heightening the tension. Avoid making the mastermind's clothing or items too modern. Ensure that the city lights in the background are not too bright or flashy.",
+        "Use various compositions according to the action: 'Somyung' fighting in the center of the screen, with enemies appearing around. 'Somyung' is positioned in the central 1/3 (half of the screen height), enemies in the left 1/3 and right 1/3 (one-third of the screen height), and broken bridges and vehicles in the bottom 2/3 (two-thirds of the screen height)., Wide, medium, close-up shot mix, 3 PM, cloudy, An action scene resolving conflict. The background is the boundary area where New Seoul and Old Seoul meet, with broken bridges, tangled rebar, and abandoned vehicles scattered around. Dust and smoke fill the air. Avoid too many characters in the action scene and ensure no modern objects are visible in the background.",
+        "In the wide shot of the city, the city is positioned in the center of the screen, the close-up of \"Somyung\" is positioned on the right side of the screen, and the sun is rising from the left side of the screen. Wide shot: New Seoul or Old Seoul is in the central 2/3 (3/4 of screen height), the sun is in the upper left 1/3 (1/4 of screen height). Close-up: \"Somyung\" is in the right 1/3 (3/4 of screen height)., Wide shot of the city, close-up of \"Somyung\", 6 AM dawn, clear, It shows the ending of the story. The background is the sunrise in the dawn sky of New Seoul with clean air, or the quiet ruins of Old Seoul, expressing hope or solemnity according to \"Somyung\"'s choice. Avoid having too many characters in the scene and ensure no modern objects are in the background."
+      ]
+    },
+    {
+      "id": 27,
+      "type": "JsonParserNode",
+      "pos": [
+        -2460,
+        930
+      ],
+      "size": [
+        317.4000244140625,
+        98
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "zipped_prompt",
+          "shape": 6,
+          "type": "ZIPPED_PROMPT",
+          "links": [
+            207
+          ]
+        },
+        {
+          "name": "zipped_character",
+          "shape": 6,
+          "type": "ZIPPED_PROMPT",
+          "links": [
+            202
+          ]
+        },
+        {
+          "name": "count",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Jpzz/ComfyUI-VirtualInteraction",
+        "ver": "719aa2937d4d0b690be83beb95a3cc66d196023c",
+        "Node name for S&R": "JsonParserNode"
+      },
+      "widgets_values": [
+        "vilab_jungho_kim_17283.json"
+      ]
+    },
+    {
+      "id": 215,
+      "type": "Text Find and Replace",
+      "pos": [
+        -1010,
+        930
+      ],
+      "size": [
+        273.6666564941406,
+        142
+      ],
+      "flags": {},
+      "order": 37,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 240
+        },
+        {
+          "name": "find",
+          "type": "STRING",
+          "widget": {
+            "name": "find"
+          },
+          "link": 241
+        },
+        {
+          "name": "replace",
+          "type": "STRING",
+          "widget": {
+            "name": "replace"
+          },
+          "link": 242
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result_text",
+          "type": "STRING",
+          "links": [
+            243
+          ]
+        },
+        {
+          "name": "replacement_count_number",
+          "type": "NUMBER",
+          "links": null
+        },
+        {
+          "name": "replacement_count_float",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "replacement_count_int",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "was-node-suite-comfyui",
+        "ver": "1.0.2",
+        "Node name for S&R": "Text Find and Replace"
+      },
+      "widgets_values": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": 188,
+      "type": "TextAppendIfFoundNode",
+      "pos": [
+        -1990,
+        1760
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_array",
+          "type": "STRING",
+          "widget": {
+            "name": "text_array"
+          },
+          "link": 251
+        },
+        {
+          "name": "find_text",
+          "type": "STRING",
+          "widget": {
+            "name": "find_text"
+          },
+          "link": 248
+        },
+        {
+          "name": "append_text",
+          "type": "STRING",
+          "widget": {
+            "name": "append_text"
+          },
+          "link": 230
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result_array",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            187
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "Jpzz/ComfyUI-VirtualInteraction",
+        "ver": "719aa2937d4d0b690be83beb95a3cc66d196023c",
+        "Node name for S&R": "TextAppendIfFoundNode"
+      },
+      "widgets_values": [
+        "",
+        "Somyung",
+        ""
+      ]
+    },
+    {
+      "id": 216,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -690,
+        960
+      ],
+      "size": [
+        810,
+        790
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 243
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            250
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "1.2.4",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "\"Somyung\" is positioned on the right side of the screen, at the right 1/3 and half the screen height. The facility's entrance is on the left side, at the left 1/3 and two-thirds the screen height. \"Somyung\" is moving carefully from right to left. The hologram display is in the center bottom, at one-fourth the screen height., medium shot, 8 PM, clear, \"Somyung\" sneaks into the power facility in New Seoul. The background is a high-tech facility surrounded by smooth metal walls, flashing LED lights, and hologram displays, with security drones and laser sensors placed everywhere. \"Somyung\" carefully steals electricity in the darkness. Adjust lighting so that \"Somyung\"'s face is not too brightly lit and ensure no other characters appear in the background.",
+        "\"Somyung\" is moving from the center of the screen to the left, with the border's barbed wire and watchtowers positioned on the right side of the screen to create a tense composition. Position \"Somyung\" at the screen's central 1/3 (at 1/3 of the screen height), barbed wire and watchtowers at the screen's right 1/3 (at 2/3 of the screen height), and New Seoul lights at the screen's left upper part (at 1/4 of the screen height)., Wide shot, Evening 9 PM, clear, \"Somyung\" is carrying the stolen power cell and crossing over to Old Seoul. The border is heavily guarded with barbed wire, watchtowers, and armed drones. The bright lights of New Seoul shine from afar, and the dark shadows of Old Seoul block the way ahead. The sound of weeds rustling in the wind adds to the tension. Avoid modern road signs or signboards on \"Somyung\"'s path. Ensure the border's security elements are not exaggerated.",
+        "For the close-up: 'Somyung's face is in the center of the screen at 3/4 of the screen height. For the wide shot: Zombies are in the left 1/3 at 1/2 of the screen height, 'Somyung' is in the right 1/3 at 1/2 of the screen height, and ruins are in the bottom 2/3 of the screen. 'Somyung's close-up is in the center of the screen, zombies appear from left to right on the screen, and 'Somyung' is fleeing to the right side of the screen., Close-up of 'Somyung's face, wide shot of zombies, 10 PM, clear, In the ruins of old Seoul, 'Somyung' barely escapes a zombie attack. The background is filled with broken asphalt, tangled vines, and collapsed shopping districts, with zombies suddenly emerging from dark alleys. Moonlight reflects off the glass of broken vehicles. Negative: Be careful not to make the zombies' movements too fast or too slow, and ensure that no modern objects are visible in the background.",
+        "The camera shows the inside of the laboratory from Somyung's point of view, with the laboratory entrance in the center of the screen, and experimental equipment scattered on the left and right. Laboratory entrance is in the central 1/3 (2/3 of screen height), broken glass tube is in the left 1/3 (1/3 of screen height), old computer and bottles are in the right 1/3 (1/3 of screen height). Somyung is not visible in POV., Somyung's POV shot, 10 AM, clear, Somyung discovers an abandoned laboratory in Old Seoul. The laboratory is covered in dust and moss, with broken glass tubes, old computers, and bottles containing strange liquids from failed experiments scattered around. Light seeping through the windows illuminates the dust. Ensure that no modern equipment is visible inside the laboratory and maintain balance so that the dust and moss are not exaggerated.",
+        "Robu is positioned in the center of the screen at the central 1/3 and at 2/3 of the screen height, Somyung is standing on the left side at the left 1/3 and at 1/2 of the screen height, and as Robu activates, light fills the screen. The old equipment and posters are in the right 1/3 and bottom at 1/4 of the screen height., Medium shot of Robu being activated, 11 AM, clear, Somyung activates AI robot Robu in the laboratory. Robu is standing covered in dust and vines, then awakens with light and mechanical sounds. In the background, the laboratory's old equipment is flickering and operating, and there are old posters on the wall. Ensure that Robu's design or movement is not too modern or futuristic, and maintain balance so that the old equipment's operation is not exaggerated.",
+        "\"Somyung\" is positioned at the left 1/3 of the screen (at half the screen height), \"Robu\" is at the right 1/3 of the screen (at two-thirds the screen height). The hologram is at the central 1/3 (at one-third the screen height). Monitors and charts are at the bottom of the screen (at one-fourth the screen height)., A two-shot of \"Somyung\" and \"Robu\", 12 PM, clear, Generate an image of \"Robu\" explaining the origin of the zombie virus to \"Somyung\" inside a laboratory. The conversation is taking place, with \"Robu\" activating a hologram that displays the virus structure and data. In the background, there are old monitors and charts in the laboratory. Negative: Ensure the hologram design is not too modern, and make sure the monitors and charts in the background are not too complex or modern in design.",
+        "Compose the scene with \"Somyung\" on the left side of the screen, the survivor on the right side of the screen, and the shelter entrance in the center. For external: The building is in the center 2/3 of the screen (3/4 of screen height). For internal: \"Somyung\" is on the right 1/3 of the screen (1/2 of screen height), the guard robot is on the left 1/3 of the screen (1/3 of screen height), and the hologram sign is at the bottom center of the screen (1/4 of screen height)., \"Somyung\" and companion's two shot, 1 PM, cloudy, Generate an image of \"Somyung\" meeting a survivor in Old Seoul. The survivor is hiding in a shelter made of waste materials, with rusty iron plates, piled-up canned goods, a broken radio, and traces of survival scattered in the background. Zombie howls are heard in the distance. Avoid making the survivor's clothing or items too modern; ensure that no modern items are visible inside the shelter.",
+        "For the building exterior shot, the building is positioned in the center of the screen; for the interior, 'Somyung' moves from the right side to the left side of the screen, with the guard robot on the left side of the screen. In close-ups: Evidence (tablet) is in the center of the screen at 3/4 of the screen height, 'Somyung' is on the right 1/3 of the screen at 1/2 of the screen height, large screen is on the left 1/3 of the screen at 1/2 of the screen height, night view is on the upper left of the screen at 1/3 of the screen height., Wide shot of the building exterior, medium shot of the interior, 7 PM, clear, Generate an image of 'Somyung' infiltrating a high-security building in 신서울, which is a massive structure of glass and steel, armed with biometric scanners, AI guard robots, and moving surveillance cameras. In the background, there are hologram signs and the quiet humming of machinery, but ensure the building's design is not too modern and maintain balance so that the internal technology is not too futuristic.",
+        "The evidence is close-up in the center of the screen, \"Somyung\" is positioned on the right side of the screen and in the central 1/3 (1/3 of screen height), the night view outside the window is visible on the left side of the screen. The security officer is in the left 1/3 (1/3 of screen height), the drone is in the upper 1/3 (1/4 of screen height), and the corridor and glass window are in the lower 2/3 (2/3 of screen height)., Close-up of the evidence, close-up of \"Somyung\"'s reaction, Evening 8 PM, clear, \"Somyung\" discovers data that reveals the conspiracy. The background is a sophisticated office, with a large screen on the wall displaying numbers and graphs, and a transparent tablet on the desk. Outside the window, the night view of Shinseoul is visible. Be careful not to make the office design too modern and not to make the night view outside the window too bright or flashy.",
+        "Somyung is fleeing in the center of the screen, with pursuing agents appearing from the left side of the screen; the drone is shot from a top-down view. Somyung in the central 1/3 (1/3 of screen height), security agents in the left 1/3 (1/3 of screen height), drone in the upper 1/3 (1/4 of screen height), corridors and glass windows in the lower 2/3 (2/3 of screen height)., Wide shot for action, close-up for intensity, 9 PM, clear, Somyung is being chased by security agents. The background is the high-tech corridors and outdoors of Shin Seoul, with flying drones and high-speed electric motorcycles joining the chase. Neon lights reflect on the building's glass windows, emphasizing the speed. Avoid too many characters in the chase scene and ensure that modern objects are not visible in the background.",
+        "\"Somyung\" is running from the right side of the screen to the left, with the border's barbed wire located in the center of the screen. \"Somyung\" moves from the right 1/3 to the left 1/3 at 1/3 of screen height, the barbed wire is in the central 1/3 at 2/3 of screen height, and the Old Seoul ruins are in the right bottom 2/3 at 2/3 of screen height., Wide shot of crossing the border, 10 PM, clear, \"Somyung\" is fleeing to Old Seoul with evidence. The border is shining with barbed wire and warning lights, and the sound of pursuing drones is getting closer. In the background, the dark ruins of Old Seoul welcome \"Somyung\". Negative: not exaggerating the border's security elements, no modern objects in the background.",
+        "\"Somyung\" is positioned on the left side of the screen at the left 1/3 (at half the screen height), the mastermind on the right side at the right 1/3 (at half the screen height), with the cityscape as the background. The glass railing and city lights are at the central lower 2/3 (at two-thirds of the screen height)., Medium shot for dialogue, close-up for emotions, 2 PM, cloudy, \"Somyung\" confronts the mastermind behind the conspiracy on the rooftop of a high-rise building in Shin Seoul, with city lights visible beyond the glass railing. Wind is howling, heightening the tension. Avoid making the mastermind's clothing or items too modern. Ensure that the city lights in the background are not too bright or flashy.",
+        "Use various compositions according to the action: 'Somyung' fighting in the center of the screen, with enemies appearing around. 'Somyung' is positioned in the central 1/3 (half of the screen height), enemies in the left 1/3 and right 1/3 (one-third of the screen height), and broken bridges and vehicles in the bottom 2/3 (two-thirds of the screen height)., Wide, medium, close-up shot mix, 3 PM, cloudy, An action scene resolving conflict. The background is the boundary area where New Seoul and Old Seoul meet, with broken bridges, tangled rebar, and abandoned vehicles scattered around. Dust and smoke fill the air. Avoid too many characters in the action scene and ensure no modern objects are visible in the background.",
+        "In the wide shot of the city, the city is positioned in the center of the screen, the close-up of \"Somyung\" is positioned on the right side of the screen, and the sun is rising from the left side of the screen. Wide shot: New Seoul or Old Seoul is in the central 2/3 (3/4 of screen height), the sun is in the upper left 1/3 (1/4 of screen height). Close-up: \"Somyung\" is in the right 1/3 (3/4 of screen height)., Wide shot of the city, close-up of \"Somyung\", 6 AM dawn, clear, It shows the ending of the story. The background is the sunrise in the dawn sky of New Seoul with clean air, or the quiet ruins of Old Seoul, expressing hope or solemnity according to \"Somyung\"'s choice. Avoid having too many characters in the scene and ensure no modern objects are in the background."
+      ]
+    },
+    {
+      "id": 217,
+      "type": "SetNode",
+      "pos": [
+        -490,
+        930
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 41,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 250
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_cvt_prompt",
+      "properties": {
+        "previousName": "cvt_prompt"
+      },
+      "widgets_values": [
+        "cvt_prompt"
+      ]
+    },
+    {
+      "id": 209,
+      "type": "JoinStrings",
+      "pos": [
+        -2450,
+        1790
+      ],
+      "size": [
+        210,
+        78
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "string1",
+          "type": "STRING",
+          "link": 244
+        },
+        {
+          "name": "string2",
+          "type": "STRING",
+          "link": 245
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            230
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "1.0.8",
+        "Node name for S&R": "JoinStrings"
+      },
+      "widgets_values": [
+        " is "
+      ]
+    },
+    {
+      "id": 218,
+      "type": "GetNode",
+      "pos": [
+        -2230,
+        1770
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            251
+          ]
+        }
+      ],
+      "title": "Get_cvt_prompt",
+      "properties": {},
+      "widgets_values": [
+        "cvt_prompt"
+      ]
+    },
+    {
+      "id": 199,
+      "type": "SplitCharacterNode",
+      "pos": [
+        -2470,
+        1220
+      ],
+      "size": [
+        362.79998779296875,
+        126
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "zipped_character",
+          "type": "ZIPPED_PROMPT",
+          "link": 202
+        }
+      ],
+      "outputs": [
+        {
+          "name": "main_char_ko_name",
+          "type": "STRING",
+          "links": [
+            237
+          ]
+        },
+        {
+          "name": "main_char_en_name",
+          "type": "STRING",
+          "links": [
+            238,
+            252,
+            255
+          ]
+        },
+        {
+          "name": "sub_char_ko_name",
+          "type": "STRING",
+          "links": [
+            241
+          ]
+        },
+        {
+          "name": "sub_char_en_name",
+          "type": "STRING",
+          "links": [
+            242,
+            244,
+            248
+          ]
+        },
+        {
+          "name": "main_char_desc",
+          "type": "STRING",
+          "links": [
+            253
+          ]
+        },
+        {
+          "name": "sub_char_desc",
+          "type": "STRING",
+          "links": [
+            245
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "Jpzz/ComfyUI-VirtualInteraction",
+        "ver": "719aa2937d4d0b690be83beb95a3cc66d196023c",
+        "Node name for S&R": "SplitCharacterNode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 89,
+      "type": "SetNode",
+      "pos": [
+        -370,
+        1750
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 38,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 194
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_prompt",
+      "properties": {
+        "previousName": "prompt"
+      },
+      "widgets_values": [
+        "prompt"
+      ]
+    },
+    {
+      "id": 194,
+      "type": "Text Concatenate",
+      "pos": [
+        -730,
+        1750
+      ],
+      "size": [
+        315,
+        142
+      ],
+      "flags": {},
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_a",
+          "shape": 7,
+          "type": "STRING",
+          "link": 192
+        },
+        {
+          "name": "text_b",
+          "shape": 7,
+          "type": "STRING",
+          "link": 193
+        },
+        {
+          "name": "text_c",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "text_d",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            194,
+            256
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "was-node-suite-comfyui",
+        "ver": "1.0.2",
+        "Node name for S&R": "Text Concatenate"
+      },
+      "widgets_values": [
+        ", ",
+        "true"
+      ]
+    },
+    {
+      "id": 210,
+      "type": "JoinStrings",
+      "pos": [
+        -1650,
+        1760
+      ],
+      "size": [
+        210,
+        78
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "string1",
+          "type": "STRING",
+          "link": 252
+        },
+        {
+          "name": "string2",
+          "type": "STRING",
+          "link": 253
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            233
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "1.0.8",
+        "Node name for S&R": "JoinStrings"
+      },
+      "widgets_values": [
+        " is "
+      ]
+    },
+    {
+      "id": 190,
+      "type": "TextAppendIfFoundNode",
+      "pos": [
+        -1130,
+        1750
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_array",
+          "type": "STRING",
+          "widget": {
+            "name": "text_array"
+          },
+          "link": 187
+        },
+        {
+          "name": "find_text",
+          "type": "STRING",
+          "widget": {
+            "name": "find_text"
+          },
+          "link": 255
+        },
+        {
+          "name": "append_text",
+          "type": "STRING",
+          "widget": {
+            "name": "append_text"
+          },
+          "link": 233
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result_array",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            192
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "Jpzz/ComfyUI-VirtualInteraction",
+        "ver": "719aa2937d4d0b690be83beb95a3cc66d196023c",
+        "Node name for S&R": "TextAppendIfFoundNode"
+      },
+      "widgets_values": [
+        "",
+        "Somyung",
+        ""
+      ]
+    },
+    {
+      "id": 147,
+      "type": "easy string",
+      "pos": [
+        -1150,
+        1930
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "string",
+          "type": "STRING",
+          "links": [
+            193
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-easy-use",
+        "ver": "1.2.9",
+        "Node name for S&R": "easy string"
+      },
+      "widgets_values": [
+        "sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))"
+      ]
+    },
+    {
+      "id": 219,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -370,
+        1870
+      ],
+      "size": [
+        1120,
+        790
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 39,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 256
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "1.2.4",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, \"Somyung\" is positioned on the right side of the screen, at the right 1/3 and half the screen height. The facility's entrance is on the left side, at the left 1/3 and two-thirds the screen height. \"Somyung\" is moving carefully from right to left. The hologram display is in the center bottom, at one-fourth the screen height., medium shot, 8 PM, clear, \"Somyung\" sneaks into the power facility in New Seoul. The background is a high-tech facility surrounded by smooth metal walls, flashing LED lights, and hologram displays, with security drones and laser sensors placed everywhere. \"Somyung\" carefully steals electricity in the darkness. Adjust lighting so that \"Somyung\"'s face is not too brightly lit and ensure no other characters appear in the background., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+        "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, \"Somyung\" is moving from the center of the screen to the left, with the border's barbed wire and watchtowers positioned on the right side of the screen to create a tense composition. Position \"Somyung\" at the screen's central 1/3 (at 1/3 of the screen height), barbed wire and watchtowers at the screen's right 1/3 (at 2/3 of the screen height), and New Seoul lights at the screen's left upper part (at 1/4 of the screen height)., Wide shot, Evening 9 PM, clear, \"Somyung\" is carrying the stolen power cell and crossing over to Old Seoul. The border is heavily guarded with barbed wire, watchtowers, and armed drones. The bright lights of New Seoul shine from afar, and the dark shadows of Old Seoul block the way ahead. The sound of weeds rustling in the wind adds to the tension. Avoid modern road signs or signboards on \"Somyung\"'s path. Ensure the border's security elements are not exaggerated., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+        "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, For the close-up: 'Somyung's face is in the center of the screen at 3/4 of the screen height. For the wide shot: Zombies are in the left 1/3 at 1/2 of the screen height, 'Somyung' is in the right 1/3 at 1/2 of the screen height, and ruins are in the bottom 2/3 of the screen. 'Somyung's close-up is in the center of the screen, zombies appear from left to right on the screen, and 'Somyung' is fleeing to the right side of the screen., Close-up of 'Somyung's face, wide shot of zombies, 10 PM, clear, In the ruins of old Seoul, 'Somyung' barely escapes a zombie attack. The background is filled with broken asphalt, tangled vines, and collapsed shopping districts, with zombies suddenly emerging from dark alleys. Moonlight reflects off the glass of broken vehicles. Negative: Be careful not to make the zombies' movements too fast or too slow, and ensure that no modern objects are visible in the background., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+        "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, The camera shows the inside of the laboratory from Somyung's point of view, with the laboratory entrance in the center of the screen, and experimental equipment scattered on the left and right. Laboratory entrance is in the central 1/3 (2/3 of screen height), broken glass tube is in the left 1/3 (1/3 of screen height), old computer and bottles are in the right 1/3 (1/3 of screen height). Somyung is not visible in POV., Somyung's POV shot, 10 AM, clear, Somyung discovers an abandoned laboratory in Old Seoul. The laboratory is covered in dust and moss, with broken glass tubes, old computers, and bottles containing strange liquids from failed experiments scattered around. Light seeping through the windows illuminates the dust. Ensure that no modern equipment is visible inside the laboratory and maintain balance so that the dust and moss are not exaggerated., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+        "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, Robu is Humanoid robot, bundles of wires visible on the upper body, Robu is positioned in the center of the screen at the central 1/3 and at 2/3 of the screen height, Somyung is standing on the left side at the left 1/3 and at 1/2 of the screen height, and as Robu activates, light fills the screen. The old equipment and posters are in the right 1/3 and bottom at 1/4 of the screen height., Medium shot of Robu being activated, 11 AM, clear, Somyung activates AI robot Robu in the laboratory. Robu is standing covered in dust and vines, then awakens with light and mechanical sounds. In the background, the laboratory's old equipment is flickering and operating, and there are old posters on the wall. Ensure that Robu's design or movement is not too modern or futuristic, and maintain balance so that the old equipment's operation is not exaggerated., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+        "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, Robu is Humanoid robot, bundles of wires visible on the upper body, \"Somyung\" is positioned at the left 1/3 of the screen (at half the screen height), \"Robu\" is at the right 1/3 of the screen (at two-thirds the screen height). The hologram is at the central 1/3 (at one-third the screen height). Monitors and charts are at the bottom of the screen (at one-fourth the screen height)., A two-shot of \"Somyung\" and \"Robu\", 12 PM, clear, Generate an image of \"Robu\" explaining the origin of the zombie virus to \"Somyung\" inside a laboratory. The conversation is taking place, with \"Robu\" activating a hologram that displays the virus structure and data. In the background, there are old monitors and charts in the laboratory. Negative: Ensure the hologram design is not too modern, and make sure the monitors and charts in the background are not too complex or modern in design., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+        "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, Compose the scene with \"Somyung\" on the left side of the screen, the survivor on the right side of the screen, and the shelter entrance in the center. For external: The building is in the center 2/3 of the screen (3/4 of screen height). For internal: \"Somyung\" is on the right 1/3 of the screen (1/2 of screen height), the guard robot is on the left 1/3 of the screen (1/3 of screen height), and the hologram sign is at the bottom center of the screen (1/4 of screen height)., \"Somyung\" and companion's two shot, 1 PM, cloudy, Generate an image of \"Somyung\" meeting a survivor in Old Seoul. The survivor is hiding in a shelter made of waste materials, with rusty iron plates, piled-up canned goods, a broken radio, and traces of survival scattered in the background. Zombie howls are heard in the distance. Avoid making the survivor's clothing or items too modern; ensure that no modern items are visible inside the shelter., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+        "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, For the building exterior shot, the building is positioned in the center of the screen; for the interior, 'Somyung' moves from the right side to the left side of the screen, with the guard robot on the left side of the screen. In close-ups: Evidence (tablet) is in the center of the screen at 3/4 of the screen height, 'Somyung' is on the right 1/3 of the screen at 1/2 of the screen height, large screen is on the left 1/3 of the screen at 1/2 of the screen height, night view is on the upper left of the screen at 1/3 of the screen height., Wide shot of the building exterior, medium shot of the interior, 7 PM, clear, Generate an image of 'Somyung' infiltrating a high-security building in 신서울, which is a massive structure of glass and steel, armed with biometric scanners, AI guard robots, and moving surveillance cameras. In the background, there are hologram signs and the quiet humming of machinery, but ensure the building's design is not too modern and maintain balance so that the internal technology is not too futuristic., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+        "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, The evidence is close-up in the center of the screen, \"Somyung\" is positioned on the right side of the screen and in the central 1/3 (1/3 of screen height), the night view outside the window is visible on the left side of the screen. The security officer is in the left 1/3 (1/3 of screen height), the drone is in the upper 1/3 (1/4 of screen height), and the corridor and glass window are in the lower 2/3 (2/3 of screen height)., Close-up of the evidence, close-up of \"Somyung\"'s reaction, Evening 8 PM, clear, \"Somyung\" discovers data that reveals the conspiracy. The background is a sophisticated office, with a large screen on the wall displaying numbers and graphs, and a transparent tablet on the desk. Outside the window, the night view of Shinseoul is visible. Be careful not to make the office design too modern and not to make the night view outside the window too bright or flashy., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+        "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, Somyung is fleeing in the center of the screen, with pursuing agents appearing from the left side of the screen; the drone is shot from a top-down view. Somyung in the central 1/3 (1/3 of screen height), security agents in the left 1/3 (1/3 of screen height), drone in the upper 1/3 (1/4 of screen height), corridors and glass windows in the lower 2/3 (2/3 of screen height)., Wide shot for action, close-up for intensity, 9 PM, clear, Somyung is being chased by security agents. The background is the high-tech corridors and outdoors of Shin Seoul, with flying drones and high-speed electric motorcycles joining the chase. Neon lights reflect on the building's glass windows, emphasizing the speed. Avoid too many characters in the chase scene and ensure that modern objects are not visible in the background., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+        "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, \"Somyung\" is running from the right side of the screen to the left, with the border's barbed wire located in the center of the screen. \"Somyung\" moves from the right 1/3 to the left 1/3 at 1/3 of screen height, the barbed wire is in the central 1/3 at 2/3 of screen height, and the Old Seoul ruins are in the right bottom 2/3 at 2/3 of screen height., Wide shot of crossing the border, 10 PM, clear, \"Somyung\" is fleeing to Old Seoul with evidence. The border is shining with barbed wire and warning lights, and the sound of pursuing drones is getting closer. In the background, the dark ruins of Old Seoul welcome \"Somyung\". Negative: not exaggerating the border's security elements, no modern objects in the background., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+        "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, \"Somyung\" is positioned on the left side of the screen at the left 1/3 (at half the screen height), the mastermind on the right side at the right 1/3 (at half the screen height), with the cityscape as the background. The glass railing and city lights are at the central lower 2/3 (at two-thirds of the screen height)., Medium shot for dialogue, close-up for emotions, 2 PM, cloudy, \"Somyung\" confronts the mastermind behind the conspiracy on the rooftop of a high-rise building in Shin Seoul, with city lights visible beyond the glass railing. Wind is howling, heightening the tension. Avoid making the mastermind's clothing or items too modern. Ensure that the city lights in the background are not too bright or flashy., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+        "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, Use various compositions according to the action: 'Somyung' fighting in the center of the screen, with enemies appearing around. 'Somyung' is positioned in the central 1/3 (half of the screen height), enemies in the left 1/3 and right 1/3 (one-third of the screen height), and broken bridges and vehicles in the bottom 2/3 (two-thirds of the screen height)., Wide, medium, close-up shot mix, 3 PM, cloudy, An action scene resolving conflict. The background is the boundary area where New Seoul and Old Seoul meet, with broken bridges, tangled rebar, and abandoned vehicles scattered around. Dust and smoke fill the air. Avoid too many characters in the action scene and ensure no modern objects are visible in the background., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))",
+        "Somyung is Female, long straight hair, wearing a gray hoodie, early teens, In the wide shot of the city, the city is positioned in the center of the screen, the close-up of \"Somyung\" is positioned on the right side of the screen, and the sun is rising from the left side of the screen. Wide shot: New Seoul or Old Seoul is in the central 2/3 (3/4 of screen height), the sun is in the upper left 1/3 (1/4 of screen height). Close-up: \"Somyung\" is in the right 1/3 (3/4 of screen height)., Wide shot of the city, close-up of \"Somyung\", 6 AM dawn, clear, It shows the ending of the story. The background is the sunrise in the dawn sky of New Seoul with clean air, or the quiet ruins of Old Seoul, expressing hope or solemnity according to \"Somyung\"'s choice. Avoid having too many characters in the scene and ensure no modern objects are in the background., sketch, (pencil sketch style:1.1), (Black and White mono tone:1.3))"
+      ]
+    }
+  ],
+  "links": [
+    [
+      18,
+      16,
+      0,
+      17,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      22,
+      17,
+      0,
+      19,
+      0,
+      "LATENT"
+    ],
+    [
+      53,
+      12,
+      0,
+      54,
+      0,
+      "*"
+    ],
+    [
+      55,
+      11,
+      1,
+      55,
+      0,
+      "*"
+    ],
+    [
+      56,
+      11,
+      2,
+      56,
+      0,
+      "*"
+    ],
+    [
+      82,
+      87,
+      0,
+      17,
+      3,
+      "LATENT"
+    ],
+    [
+      83,
+      88,
+      0,
+      15,
+      0,
+      "CLIP"
+    ],
+    [
+      84,
+      88,
+      0,
+      16,
+      0,
+      "CLIP"
+    ],
+    [
+      86,
+      90,
+      0,
+      15,
+      1,
+      "STRING"
+    ],
+    [
+      87,
+      91,
+      0,
+      17,
+      0,
+      "MODEL"
+    ],
+    [
+      88,
+      92,
+      0,
+      19,
+      1,
+      "VAE"
+    ],
+    [
+      127,
+      19,
+      0,
+      130,
+      0,
+      "*"
+    ],
+    [
+      129,
+      131,
+      0,
+      132,
+      0,
+      "IMAGE"
+    ],
+    [
+      135,
+      16,
+      0,
+      142,
+      0,
+      "*"
+    ],
+    [
+      137,
+      145,
+      0,
+      146,
+      0,
+      "LORA_STACK"
+    ],
+    [
+      146,
+      19,
+      0,
+      149,
+      0,
+      "IMAGE"
+    ],
+    [
+      159,
+      15,
+      0,
+      166,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      160,
+      166,
+      0,
+      17,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      161,
+      166,
+      0,
+      141,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      167,
+      11,
+      0,
+      146,
+      1,
+      "MODEL"
+    ],
+    [
+      168,
+      146,
+      0,
+      12,
+      0,
+      "MODEL"
+    ],
+    [
+      187,
+      188,
+      0,
+      190,
+      0,
+      "STRING"
+    ],
+    [
+      192,
+      190,
+      0,
+      194,
+      0,
+      "STRING"
+    ],
+    [
+      193,
+      147,
+      0,
+      194,
+      1,
+      "STRING"
+    ],
+    [
+      194,
+      194,
+      0,
+      89,
+      0,
+      "STRING"
+    ],
+    [
+      202,
+      27,
+      1,
+      199,
+      0,
+      "ZIPPED_PROMPT"
+    ],
+    [
+      207,
+      27,
+      0,
+      201,
+      0,
+      "ZIPPED_PROMPT"
+    ],
+    [
+      216,
+      201,
+      3,
+      207,
+      0,
+      "STRING"
+    ],
+    [
+      217,
+      201,
+      2,
+      207,
+      1,
+      "STRING"
+    ],
+    [
+      218,
+      201,
+      1,
+      207,
+      2,
+      "STRING"
+    ],
+    [
+      219,
+      201,
+      0,
+      207,
+      3,
+      "STRING"
+    ],
+    [
+      221,
+      207,
+      0,
+      202,
+      0,
+      "STRING"
+    ],
+    [
+      230,
+      209,
+      0,
+      188,
+      2,
+      "STRING"
+    ],
+    [
+      233,
+      210,
+      0,
+      190,
+      2,
+      "STRING"
+    ],
+    [
+      236,
+      202,
+      0,
+      213,
+      0,
+      "STRING"
+    ],
+    [
+      237,
+      199,
+      0,
+      213,
+      1,
+      "STRING"
+    ],
+    [
+      238,
+      199,
+      1,
+      213,
+      2,
+      "STRING"
+    ],
+    [
+      239,
+      213,
+      0,
+      214,
+      0,
+      "STRING"
+    ],
+    [
+      240,
+      214,
+      0,
+      215,
+      0,
+      "STRING"
+    ],
+    [
+      241,
+      199,
+      2,
+      215,
+      1,
+      "STRING"
+    ],
+    [
+      242,
+      199,
+      3,
+      215,
+      2,
+      "STRING"
+    ],
+    [
+      243,
+      215,
+      0,
+      216,
+      0,
+      "STRING"
+    ],
+    [
+      244,
+      199,
+      3,
+      209,
+      0,
+      "STRING"
+    ],
+    [
+      245,
+      199,
+      5,
+      209,
+      1,
+      "STRING"
+    ],
+    [
+      248,
+      199,
+      3,
+      188,
+      1,
+      "STRING"
+    ],
+    [
+      250,
+      216,
+      0,
+      217,
+      0,
+      "*"
+    ],
+    [
+      251,
+      218,
+      0,
+      188,
+      0,
+      "STRING"
+    ],
+    [
+      252,
+      199,
+      1,
+      210,
+      0,
+      "STRING"
+    ],
+    [
+      253,
+      199,
+      4,
+      210,
+      1,
+      "STRING"
+    ],
+    [
+      255,
+      199,
+      1,
+      190,
+      1,
+      "STRING"
+    ],
+    [
+      256,
+      194,
+      0,
+      219,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Load Models",
+      "bounding": [
+        -2530,
+        50,
+        1070,
+        780
+      ],
+      "color": "#8A8",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "1st Sampling",
+      "bounding": [
+        -1450,
+        50,
+        2110,
+        780
+      ],
+      "color": "#a1309b",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "Prompt",
+      "bounding": [
+        -2530,
+        840,
+        2800,
+        1330
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 10,
+      "title": "Output",
+      "bounding": [
+        -2530,
+        -470,
+        1560,
+        510
+      ],
+      "color": "#444",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.7985878990921658,
+      "offset": [
+        3057.2440433633633,
+        453.73688569249606
+      ]
+    },
+    "frontendVersion": "1.18.7"
+  },
+  "version": 0.4
+}
