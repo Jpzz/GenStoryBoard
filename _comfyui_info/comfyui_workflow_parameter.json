@@ -1,0 +1,22 @@
+{
+    "FLUX1.0-dev":
+    {
+        "seed": 1,
+        "steps": 20,
+        "cfg": 1,
+        "modelPath": "FLUX1\\flux_dev.safetensors",
+        "clip1": "FLUX1\\t5xxl_fp16.safetensors",
+        "clip2": "FLUX1\\clip_l.safetensors",
+        "vae": "FLUX1\\ae.safetensors"
+    },
+    "FLUX1.0-schnell":
+    {
+        "seed": 1,
+        "steps": 4,
+        "cfg": 1,
+        "modelPath": "FLUX1\\flux-schnell.safetensors",
+        "clip1": "FLUX1\\t5xxl_fp16.safetensors",
+        "clip2": "FLUX1\\clip_l.safetensors",
+        "vae": "FLUX1\\ae.safetensors"
+    }
+}
